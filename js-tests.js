@@ -179,3 +179,173 @@
 // console.log(3 || true || 4); // 3
 // console.log(true || false || 7); // true
 // console.log(0 || false || undefined); // undefined
+
+// let cost;
+// const subscription = "pro";
+
+// if (subscription === "pro") {
+//   cost = 100;
+// } else {
+//   cost = 0;
+// }
+// console.log(cost);
+
+// let cost;
+// const subscription = "free";
+
+// if (subscription === "free") {
+//   cost = 0;
+// } else if (subscription === "pro") {
+//   cost = 100;
+// } else if (subscription === "premium") {
+//   cost = 500;
+// } else {
+//   console.log("Invalid subscription type");
+// }
+
+// console.log(cost);
+
+// ===========Тернарний оператор---------------
+
+// let type;
+// const age = 38;
+
+// if (age >= 18) {
+//   type = "adult";
+// } else {
+//   type = "child";
+// }
+// console.log(type);
+
+// // теж саме але через тернарний оператор
+
+// const age = 2;
+
+// const type = age >= 18 ? "adult" : "child";
+
+// console.log(type);
+
+// // пошук більшого числа
+// const num1 = 50;
+// const num2 = 100;
+// let biggerNumber;
+
+// if (num1 > num2) {
+//   biggerNumber = num1;
+// } else {
+//   biggerNumber = num2;
+// }
+// console.log(`Bigger number is ${biggerNumber}`);
+
+// пишемо через тернарний оператор
+
+// const num1 = 50;
+// const num2 = 10;
+// const biggerNumber = num1 > num2 ? num1 : num2;
+
+// console.log(`Bigger number is ${biggerNumber}`);
+
+// ====================instruction SWITCH-----------------------------
+
+// let cost;
+// const subscriotion = "pro";
+
+// switch (subscriotion) {
+//   case "free":
+//     cost = 0;
+//     break;
+
+//   case "pro":
+//     cost = 100;
+//     break;
+
+//   case "premium":
+//     cost = 500;
+//     break;
+
+//   default:
+//     console.log("Invalid subscription type");
+// }
+
+// console.log(cost);
+
+// ================WHILE--------------
+
+// створимо лічильник
+
+// let counter = 0;
+
+// while (counter < 3) {
+//   console.log("counter: ", counter);
+//   counter += 1;
+// }
+
+// заповнюємо місця в готелі до максимум місць
+
+// let clientsCounter = 18;
+// const maxClients = 31;
+
+// while (clientsCounter < maxClients) {
+//   console.log(clientsCounter);
+//   clientsCounter += 1;
+// }
+// console.log("нажаль вільні номери скінчились");
+
+// =================DO...WHILE-----------
+// let password = "";
+
+// do {
+//   password = prompt("Введіть пароль довший 4-х символів", "");
+// } while (password.length < 5);
+
+// console.log("Ввели пароль: ", password);
+
+// ============================FOR===================================
+
+// for (let i = 0; i <= 20; i += 5) {
+//   console.log(i);
+// }
+
+// // сума чисел до певного значення
+
+// const target = 10;
+// let sum = 0;
+
+// for (let i = 0; i <= target; i += 1) {
+//   sum += i;
+//   console.log(i);
+// }
+
+// console.log(sum);
+// остача від діленя за допомогою циклу for
+
+// const max = 10;
+
+// for (let i = 0; i < max; i += 1) {
+//   console.log(`${max} % ${i} = `, max % i);
+// }
+
+// ----------------BREAK---------------
+
+// for (let i = 0; i <= 5; i += 1) {
+//   console.log(i);
+
+//   if (i === 3) {
+//     console.log("Знайшли число 3, перериваємо виконання циклу");
+//     break;
+//   }
+// }
+
+// console.log("Лог після циклу");
+
+//-------------------CONTINUE------------
+
+// const number = 10;
+
+// for (let i = 0; i < number; i += 1) {
+//   if (i % 2 === 0) {
+//     continue;
+//   }
+
+//   console.log("Непарне i: ", i); // 1, 3, 5, 7, 9
+// }
