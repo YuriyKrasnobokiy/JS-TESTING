@@ -90,9 +90,14 @@
 // console.log(greeting);
 // const greeting1 = `Welcome ${guestName}, your room number is ${roomNumber}!`;
 // console.log(greeting1);
+
+// ==================length====================
+
 // const message = "Welcome to Hell";
 // console.log(message.length);
 // console.log("There is nothing impossible to him who will try".length);
+
+// ==================toLowerCase, toUpperCase====================
 // console.log(message.toLowerCase());
 // console.log(message.toUpperCase());
 // const BRAND_NAME = "SAMSUNG";
@@ -102,11 +107,17 @@
 // console.log(userInput === BRAND_NAME); // false
 // console.log(normalizedToUpperCaseInput); // 'SAMSUNG'
 // console.log(normalizedToUpperCaseInput === BRAND_NAME); // true
+
+// ==================indexOf====================
+
 // const message = "Welcome to Bahamas!";
 // console.log(message.indexOf("o")); // 4
 // console.log(message.indexOf("a")); // 12
 // console.log(message.indexOf("B")); // 11
 // console.log(message.indexOf("x")); // -1
+
+// ==================includes====================
+
 // const productName = "Ремонтний дроїд";
 // console.log(productName.includes("н")); // true
 // console.log(productName.includes("Н")); // false
@@ -114,13 +125,22 @@
 // console.log(productName.includes("Дроїд")); // false
 // console.log(productName.includes("Ремонтний")); // true
 // console.log(productName.includes("PTVнтний")); // false
+
+// ==================replace====================
+
 // const jsFileName = "script.js";
 // const minifiedJsFileName = jsFileName.replace(".js", ".min.js");
 // console.log(minifiedJsFileName); // "script.min.js"
+
+// ==================replaceAll====================
+
 // const cssFileNames =
 //   "styles.css, about.css, portfolio.css";
 // const minifiedCssFileNames = cssFileNames.replaceAll(".css", ".min.css");
 // console.log(minifiedCssFileNames); // "styles.min.css, about.min.css, portfolio.min.css"
+
+// ==================slice====================
+
 // const productName = "Repair droid";
 // console.log(productName.slice(0, 4)); // "Repa"
 // console.log(productName.slice(3, 9)); // "air dr"
@@ -128,6 +148,9 @@
 // console.log(productName.slice(7, productName.length)); // "droid"
 // console.log(productName.slice(4, 5)); // "i"
 // console.log(productName.slice(-6, productName.length)); // " droid"
+
+// ==================Math.ceil, Math.floor, Math.round====================
+
 // const apples = 30;
 // const grapes = 100;
 // const result = -apples + grapes;
@@ -136,11 +159,13 @@
 // console.log(Math.ceil(value));
 // console.log(Math.floor(value));
 // console.log(Math.round(value));
+
 // const companyName = "Cyberdine System";
 // const repairBots = 150;
 // const defenceBots = 50;
 // const message = `${companyName} has ${repairBots + defenceBots} bots in stock`;
 // console.log(message);
+
 // індекс маси тіла необхідно округлити до однієї цифри після коми.
 // let weight = "88,3";
 // let height = "1.75";
@@ -152,6 +177,7 @@
 // const bmi = Number((weight / Math.pow(height, 2)).toFixed(1)); // коротший запис.
 // console.log(typeof bmi);
 // console.log(bmi);
+
 // console.log(10 > 5);
 // console.log(10 < 5);
 // console.log(10 >= 5);
@@ -162,20 +188,27 @@
 // console.log("10" < "5");
 // console.log("5" == 5);
 // console.log("6" === 6);
+
 // false => 0;
 // true => 1;
+
 // console.log(6 == true);
 // console.log(1 == true);
 // console.log(0 == false);
 // console.log(1 === true);
 // console.log(0 === false);
+
 // console.log("Papaya" < "papaya"); // true 'P' < 'p' 50 < 70
+
 // && повертає перше false або останнє true
+
 // console.log(true && 4); // 4
 // console.log(false && 4); // false
 // console.log(true && 4 && "kiwi"); // kiwi
 // console.log(true && 0 && "kiwi"); // 0
+
 // // || повертає перше true або останнє false
+
 // console.log(3 || true || 4); // 3
 // console.log(true || false || 7); // true
 // console.log(0 || false || undefined); // undefined
@@ -359,3 +392,113 @@
 
 //   console.log("Непарне i: ", i); // 1, 3, 5, 7, 9
 // }
+
+// =====================ПРАКТИКА================================
+
+// ====================Задачка про світлофор ===============================================
+
+// Спитати який колір бачить юзер на світлофорі і вказати що йому робити
+
+// // через if else if
+
+// let userColor = prompt("COLOR?");
+// let action; // це лише нам і необов'язково
+
+// const red = "red";
+// const yellow = "yellow";
+// const green = "green";
+
+// if (userColor) {
+//   userColor = userColor.toLowerCase();
+//   console.log(userColor); // це лише нам і необов'язково
+// }
+
+// if (userColor === red) {
+//   alert("STOP!"); // це юзеру
+//   action = "STOP!"; // це лише нам і необов'язково
+// } else if (userColor === yellow) {
+//   alert("READY!"); // це юзеру
+//   action = "READY!"; // це лише нам і необов'язково
+// } else if (userColor === green) {
+//   alert("GO!"); // це юзеру
+//   action = "GO!"; // це лише нам і необов'язково
+// } else {
+//   alert("BE CAREFUL!"); // це юзеру
+//   action = "BE CAREFUL!"; // це лише нам і необов'язково
+// }
+
+// console.log(action); // це лише нам і необов'язково
+
+// ==================Задачка про світлофор через switch===============================================
+
+// let userColor = prompt("COLOR?");
+// let action; // це лише нам і необов'язково
+
+// const red = "red";
+// const yellow = "yellow";
+// const green = "green";
+
+// if (userColor) {
+//   userColor = userColor.toLowerCase();
+//   console.log(userColor); // це лише нам і необов'язково
+// }
+
+// switch (userColor) {
+//   case "red":
+//     action = "STOP"; // це лише нам і необов'язково
+//     alert("STOP!");
+//     break;
+
+//   case "yellow":
+//     action = "READY"; // це лише нам і необов'язково
+//     alert("READY!");
+//     break;
+
+//   case "green":
+//     action = "GO"; // це лише нам і необов'язково
+//     alert("GO!");
+//     break;
+
+//   default:
+//     action = "BE CAREFUL!"; // це лише нам і необов'язково
+//     alert("BE CAREFUL!");
+// }
+
+// console.log(action); // це лише нам і необов'язково
+
+// -------------------------ЗАДАЧКА ПРО РАВЛИКА (З ФУНКЦІЄЮ )----------------------------------------
+
+// function getDays(deps) {
+//   const daySpeed = 7;
+//   const nightSpeed = 2;
+//   let total = 0;
+//   let days = 0;
+
+//   while (total < deps) {
+//     total += daySpeed;
+//     days += 1;
+
+//     if (total < deps) {
+//       total -= nightSpeed;
+//     }
+//   }
+//   console.log(days);
+// }
+
+// getDays(18);
+
+// ----------------------------Підрахуй скільки голосних літер у реченні-----------------
+
+// function countVowel(str) {
+//   const vowels = "aeiou";
+//   let counter = 0;
+
+//   for (let i = 0; i < str.length; i += 1) {
+//     if (vowels.includes(str[i].toLowerCase())) {
+//       counter += 1;
+//     }
+//   }
+//   return counter;
+// }
+
+// console.log(countVowel("HELLO WORLD"));
