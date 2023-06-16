@@ -79,7 +79,7 @@
 // console.log(Math.pow(2, 4)); // 16
 // // Math.random() - повертає псевдовипадкове число в діапазоні [0, 1)
 // console.log(Math.random()); // випадкове число між 0 і 1
-// console.log(Math.round(Math.random() * (10 - 1) + 1)); // псевдовипадкове число від 1 до 10
+// console.log(Math.random() * (10 - 1) + 1); // псевдовипадкове число від 1 до 10
 // console.log(Math.round(Math.random() * (10 - 1) + 1)); // повертає ціле випадкове число
 // const message = "Mango " + "is" + " happy";
 // console.log(message); // Mango is happy
@@ -269,7 +269,17 @@
 
 // console.log(cost);
 
-// ================WHILE--------------
+// ================================Область видимості=========================================
+// const value = 5;
+
+// if (true) {
+//   const value = 5;
+//   console.log("Block scope: ", value); // 5
+// }
+
+// console.log("Global scope: ", value); // ReferenceError: value is not defined
+
+// ===============================WHILE----------------------------
 
 // створимо лічильник
 
