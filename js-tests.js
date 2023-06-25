@@ -652,7 +652,7 @@
 
 // console.log(result);
 
-// =====================================================2.1 Масиви=================================================================
+// ==================================2.1 Масиви=================================================================
 // const clients = ["Mango", "Poly", "Ajax"];
 // console.log(clients);
 // clients[0] = "Kiwi";
@@ -1076,3 +1076,318 @@
 //   }
 // }
 // console.log(min);
+
+// ---------------------------------------------task 1------------------------------------------
+
+// Напиши скрипт який буде перебирати масив та видаляти всі елементи масиву що не є типом даних Number.
+
+// const arrA = [3, "Hello", null, 42, false];
+
+// for (let i = 0; i < arrA.length; i += 1) {
+//   if (typeof arrA[i] !== "number") {
+//     arrA.splice(i, 1);
+//     i -= 1; // якщо є два елементи підряд що не задовольняють нашу умову, бо реіндексація відбувається
+//   }
+// }
+// console.log(arrA);
+
+// другий - кращий варіант цего
+// перебирання з кінця
+
+// const arrA = [3, "Hello", null, 42, false];
+// for (let i = arrA.length - 1; i >= 0; i -= 1) {
+//   if (typeof arrA[i] !== "number") {
+//     arrA.splice(i, 1);
+//   }
+// }
+// console.log(arrA);
+
+// ще такий же приклад
+// const arrB = ["world", true, 22, 41, undefined];
+
+// for (let i = arrB.length - 1; i >= 0; i--) {
+//   if (typeof arrB[i] === "number") {
+//     continue;
+//   }
+//   arrB.splice(i, 1);
+// }
+// console.log(arrB);
+
+// Портрібно створити ф-цію яка буде прймати 1 параметр. Ф-ція повинна відібрати з масиву тільки ті елементи що дублюються в ньому та повернути їх у вигляді нового масиву як результат виконання ф-ції.
+
+// function getCommonElements(arr) {
+//   const result = [];
+
+//   for (let i = 0; i < arr.length; i++) {
+//     if (arr.includes(arr[i], i + 1)) {
+//       result.push(arr[i]);
+//     }
+//   }
+//   return result;
+// }
+
+// console.log(getCommonElements([1, 2, 3, 2, 1, 17, 19]));
+
+// -----------------------------ТАСКА З АВТОПЕРЕВІРКИ 25/32---------------------------------------
+
+// Напиши функцію getCommonElements(array1, array2), яка отримує два масиви довільної довжини в параметри array1 і array2, і повертає новий масив, що складається з тих елементів, які присутні в обох вихідних масивах.
+
+// Оголошена функція getCommonElements(array1, array2)
+// Виклик getCommonElements([1, 2, 3], [2, 4]) повертає [2]
+// Виклик getCommonElements([1, 2, 3], [2, 1, 17, 19]) повертає [1, 2]
+// Виклик getCommonElements([24, 12, 27, 3], [12, 8, 3, 36, 27]) повертає [12, 27, 3]
+// Виклик getCommonElements([10, 20, 30, 40], [4, 30, 17, 10, 40]) повертає [10, 30, 40]
+// Виклик getCommonElements([1, 2, 3], [10, 20, 30]) повертає []
+// Виклик функції getCommonElements() з випадковими двома масивами повертає правильний масив
+// В циклі for використовувалися методи includes і push
+
+// // рішення
+
+// function getCommonElements(array1, array2) {
+//   let result = [];
+
+//   for (let i = 0; i < array2.length; i += 1) {
+//     if (array2.includes(array1[i])) {
+//       result.push(array1[i]);
+//     }
+//   }
+//   console.log(result);
+//   return result; // [12, 27, 3]
+// }
+// getCommonElements([24, 12, 27, 3], [12, 8, 3, 36, 27]);
+
+// // ------------------------------------------task 3-------------------
+// // Створи ф-цію яка буде приймати 2 параметри: 1 парам - це масив всіх юзерів; 2 парам - це масив тільки чоловічих імен. Ф-ція повинна відібрати з масиву всіх юзерів лише з жін. іменами та повернути їх в результаті свого виконання.
+// const users = [
+//   "Artem",
+//   "Anna",
+//   "Larisa",
+//   "Max",
+//   "Sveta",
+//   "David",
+//   "Roman",
+//   "Olga",
+//   "Zoya",
+//   "Kate",
+// ];
+// const men = ["Artem", "Max", "David", "Roman"];
+// function getWomen(users, men) {
+//   const women = [];
+//   for (const user of users) {
+//     if (!men.includes(user)) {
+//       women.push(user);
+//     }
+//   }
+//   return women;
+// }
+
+// console.log(getWomen(users, men));
+
+// // -----------------------------------------task 4-------------------
+
+// // Напиши скрипт який буде перевіряти чи елементи в масиві розташовані в порядку зростання. Якщо ж ні, то заміни елемент на вірний.
+
+// const numbers = [1, 2, 3, 1, 5, 6, 1, 1, 9];
+
+// for (let i = 1; i < numbers.length; i += 1) {
+//   const currentEl = numbers[i];
+//   const prevEl = numbers[i - 1];
+//   if (currentEl - prevEl !== 1) {
+//     numbers[i] = prevEl + 1;
+//   }
+// }
+// console.log(numbers);
+
+// // -----------------------------------------task 5-------------------
+// Напиши ф-цію яка на основі масиву користувачів що поставили лайк формує та повертає рядок.Ф-ція має повернути текст в форматі як на прикладах.
+// []                                -->  "no one likes this"
+// ["Peter"]                         -->  "Peter likes this"
+// ["Jacob", "Alex"]                 -->  "Jacob and Alex like this"
+// ["Max", "John", "Mark"]           -->  "Max, John and Mark like this"
+// ["Alex", "Jacob", "Mark", "Max"]  -->  "Alex, Jacob and 2 others like this"
+
+// function createStr(arr) {
+//   let message;
+//   switch (arr.length) {
+//     case 0:
+//       message = "no one likes this";
+//       break;
+//     case 1:
+//       message = `${arr[0]} likes this`;
+//       break;
+//     case 2:
+//       message = `${arr[0]} and ${arr[1]} like this`;
+//       break;
+//     case 3:
+//       message = `${arr[0]}, ${arr[1]} and ${arr[2]} like this`;
+//       break;
+//     default:
+//       message = `${arr[0]}, ${arr[1]} and ${arr.length - 2} others like this`;
+//   }
+//   return message;
+// }
+
+// console.log(createStr([]));
+// console.log(createStr(["Peter"]));
+// console.log(createStr(["Jacob", "Alex"]));
+// console.log(createStr(["Max", "John", "Mark"]));
+// console.log(
+//   createStr([
+//     "Jacob",
+//     "Alex",
+//     "Jacob",
+//     "Mark",
+//     "Max",
+//     "Mark",
+//     "Max",
+//     "Mark",
+//     "Max",
+//   ]),
+// );
+
+// =================Модуль 2.4 ФУНКЦІЇ====================================
+
+// function withdraw(amount, balance) {
+//   if (amount === 0) {
+//     result = console.log("Для проведення операції введіть суму більшу за нуль");
+//   } else if (amount > balance) {
+//     result = console.log("Недостатньо коштів на рахунку");
+//   } else {
+//     result = console.log("Операція зняття коштів проведена успішно");
+//   }
+// }
+
+// withdraw(0, 300); // "Для проведення операції введіть суму більшу за нуль"
+// withdraw(500, 300); // "Недостатньо коштів на рахунку"
+// withdraw(100, 300); // "Операція зняття коштів проведена успішно"
+
+// ---------------------------------------
+
+// function withdraw(amount, balance) {
+//   // Якщо умова виконується, викликається console.log
+//   // і вихід із функції. Код після тіла if не виконається.
+//   if (amount === 0) {
+//     console.log("Для проведення операції введіть суму більшу за нуль");
+//     return;
+//   }
+
+//   // Якщо умова першого if не виконалась, його тіло пропускається
+//   // та інтерпретатор доходе до другого if.
+//   // Якщо умова виконується, викликається console.log і вихід із функції.
+//   // Код, що знаходиться після тіла if, не виконається.
+//   if (amount > balance) {
+//     console.log("Недостатньо коштів на рахунку");
+//     return;
+//   }
+
+//   // Якщо жоден із попередніх if не виконався,
+//   // інтерпретатор доходить до цього коду і виконує його.
+//   console.log("Операція зняття коштів проведена");
+// }
+
+// withdraw(0, 300); // "Для проведення операції введіть суму більшу за нуль"
+// withdraw(500, 300); // "Недостатньо коштів на рахунку"
+// withdraw(100, 300); // "Операція зняття коштів проведена"
+
+// --------Функціональний вираз-------------------------
+// // виклик до оголошення
+// multiply(3, 4, 5);
+
+// function multiply(x, y, z) {
+//   console.log(`Результат множення дорівнює ${x * y * z}`);
+// }
+// // виклик після оголошення
+// multiply(8, 9, 11);
+
+// ---------------нотатки з записаної лекції--------------------
+
+// const arr = [1, 2, 3, 4];
+// const arr2 = [5, 6, 7];
+// const arr3 = [8, 9];
+
+// function sum(item) {
+//   for (let i = 0; i < item.length; i += 1) {
+//     item[i] = item[i] * 2;
+//   }
+//   console.log(item);
+// }
+
+// sum(arr);
+// sum(arr2);
+// sum(arr3);
+
+// declaration
+// function name(param) {}
+
+// expression
+// це ф-ція що оголошена в змінній
+
+// const arr = [1, 2, 3, 4];
+// const arr2 = [5, 6, 7];
+// const arr3 = [8, 9];
+
+// const sum = function (item) {
+//   for (let i = 0; i < item.length; i += 1) {
+//     item[i] = item[i] * 2;
+//   }
+//   console.log(item);
+// };
+
+// sum(arr);
+// sum(arr2);
+// sum(arr3);
+
+// --------------дефолтне значення аргументу------------------
+
+// function add(val, val1 = 0) {
+//   return val + val1;
+// }
+
+// console.log(add(3, 4));
+// console.log(add(5, 7));
+// console.log(add(11));
+
+// ==================стек викликів ф-ції============================
+
+// function createString(name, year) {
+//   // const result = add(year);
+//   return `${name} years ${add(year)} old`;
+// }
+// console.log(createString(`Mango`, [1, 7, 3]));
+
+// ----------------------------------переперегляд лекції модулю 2.2----------------------------------------------------
+
+// -------------------------------Область видимості------------------------
+
+// // ex 1
+
+// let value = 4;
+
+// if (true) {
+//   value = 11;
+// }
+
+// console.log(value); // 11
+
+// // ex 2
+
+// let value = 4;
+
+// if (true) {
+//   let value = 11;
+// }
+
+// console.log(value); // 4
+
+// ex 3
+
+let value = 4;
+
+if (true) {
+  if (true) {
+    value = 24;
+  }
+  let value = 11;
+}
+
+console.log(value); // 11
