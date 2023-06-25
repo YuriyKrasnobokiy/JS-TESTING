@@ -1359,6 +1359,8 @@
 
 // -------------------------------Область видимості------------------------
 
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 // // ex 1
 
 // let value = 4;
@@ -1379,15 +1381,122 @@
 
 // console.log(value); // 4
 
-// ex 3
+// // ex 3
 
-let value = 4;
+// let value = 4;
 
-if (true) {
-  if (true) {
-    value = 24;
+// if (true) {
+//   if (true) {
+//     value = 24;
+//   }
+//   let value = 11;
+// }
+
+// console.log(value); // помилка доступу до змінної, бо звертаємось до змінної перед її ініціалізацією.
+
+// // ex 4
+
+// let value = 2;
+
+// function checkScope(value) { // let value = 2 це локальна змінна яку ми перевизначаємо
+//   value = 45;
+//   return value;
+// }
+
+// checkScope(value);
+
+// console.log(value); // 2
+
+// // ex 5
+
+// let value = 2;
+
+// function checkScope() {
+//   value = 45;
+//   return value;
+// }
+
+// checkScope(value);
+
+// console.log(value); // 45
+
+// // ex 6
+
+// let someArray = ["Hello", "my", "name", "is", "scope"];
+
+// function checkScope(arr) { // let arr = someArray;
+//   arr.splice(0, 3);
+// }
+
+// checkScope(someArray);
+
+// console.log(someArray); // ["is", "scope"]
+
+// // ex 7
+
+// let someArray = ["Hello", "my", "name", "is", "scope"];
+
+// function checkScope(arr) {
+//   // let arr = someArray;
+//   arr = Array.from(arr);
+//   arr.splice(0, 3);
+// }
+
+// checkScope(someArray);
+
+// console.log(someArray); // ["Hello", "my", "name", "is", "scope"];
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+// ------------------Call Stack--------------------------------------
+
+// function logItem(valA, valB) {
+//   const result = getSum(valA, valB);
+//   const message = `Result is ${result}`;
+//   console.log(message);
+// }
+
+// function getSum(a, b) {
+//   return a + b;
+// }
+
+// logItem(5, 7);
+
+// ----------------Приклад переповнення call stack та виникнення помилки що call stack переповнено: Uncaught RangeError: Maximum call stack size exceeded--------------------
+
+// function logItem(valA, valB) {
+//   const result = getSum(valA, valB);
+//   const message = `Result is ${result}`;
+//   console.log(message);
+// }
+
+// function getSum(a, b) {
+//   logItem(); // відбуваються виклики ф-цій по колу.
+//   return a + b;
+// }
+
+// logItem(5, 7);
+
+//-------------- Практика ---------------- //
+
+// Task-1;
+// Створи функцію яка буде перевіряти чи кожен елемент масиву більше ніж вказане значення. Функція приймає два параметри.
+// 1 - Масив чисел
+// 2 - Число яке потрібно порівнювати з усіма елементами масиву.
+// Функція повертає повідомлення про успішну або не успішну перевірку (повідомлення "Success ✅" "Fail ❌")
+
+const numbers = [25, 12, 67, 40, 18];
+// Застосування функції
+
+function checkValue(arr, target) {
+  let message = "Success ✅";
+  for (const numb of arr) {
+    if (target > numb) {
+      message = "Fail ❌";
+    }
   }
-  let value = 11;
+  return message;
 }
+checkValue(numbers, 10);
 
-console.log(value); // 11
+console.log(checkValue(numbers, 10));
