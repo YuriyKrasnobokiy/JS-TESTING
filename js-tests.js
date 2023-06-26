@@ -1610,3 +1610,202 @@
 // updateCourse("HTML", "NestJS");
 // console.log(updateCourse("qwerty", "NestJS"));
 // console.log(courses); // ['NestJS', 'CSS', 'JavaScript', 'React', 'PostgreSQL']
+
+//===================================== Модуль 3.1 Об'єкти ================================================================
+
+// const book = {
+//   title: "The Last Kingdom",
+//   author: "Bernard Cornwell",
+//   genres: ["historical prose", "adventure"],
+//   isPublic: true,
+//   rating: 8.38,
+// };
+
+// book.rating = 10;
+// book.genres.push("sasasdasd");
+// book.pages = 1245;
+// book.originalLang = "ua";
+
+// console.log(book);
+
+// console.log(book.rating);
+
+// const bookTitle = book["title"];
+// console.log(bookTitle); // 'The Last Kingdom'
+
+// const bookGenres = book["genres"];
+// console.log(bookGenres); // ['historical prose', 'adventurs']
+
+// const propKey = "author";
+// const bookAuthor = book[propKey];
+// console.log(bookAuthor); // 'Bernard Cornwell'
+
+// const name = "Arthur";
+// const age = 27;
+// const user = {
+//   name,
+//   age,
+// };
+
+// user.country = "Ukraine";
+// user.job = "Js developer";
+
+// console.log(user);
+// console.log(user.name);
+// console.log(user.age);
+// console.log(user.country);
+
+// const propName = "name";
+// const propStatus = "status";
+// const user = {
+//   age: 25,
+//   // Ім'я цієї властивості буде взяте зі значення змінної propName
+//   [propName]: "Генрі Сибола",
+//   [propStatus]: "IT",
+// };
+
+// console.log(user.name); // 'Генрі Сибола'
+// console.log(user.status); // 'IT'
+
+// const bookShelf = {
+//   books: ["The Last Kingdom", "The Last Kingdom2", "The Last Kingdom3"],
+//   getBooks() {
+//     console.log(this);
+//   },
+// };
+
+// // Перед крапкою знаходиться об'єкт bookShelf,
+// // тому, викликаючи метод, this буде зберігати посилання на нього.
+// bookShelf.getBooks(); // {books: ['The Last Kingdom'], getBooks: f}
+
+// ===============Масив об'єктів=======================
+
+// const books = [
+//   {
+//     title: "The Last Kingdom",
+//     author: "Bernard Cornwell",
+//     rating: 8.38,
+//   },
+//   {
+//     title: "На березі спокійних вод",
+//     author: "Роберт Шеклі",
+//     rating: 8.51,
+//   },
+//   {
+//     title: "Сон смішної людини",
+//     author: "Федір Достоєвський",
+//     rating: 7.75,
+//   },
+// ];
+
+// for (const book of books) {
+//   // Об'єкт книги
+//   console.log(book);
+//   // Назва
+//   console.log(book.title);
+//   // Автор
+//   console.log(book.author);
+//   // Рейтинг
+//   console.log(book.rating);
+// }
+
+// const bookNames = [];
+
+// for (const book of books) {
+//   bookNames.push(book.title);
+// }
+
+// console.log(bookNames); // ["The Last Kingdom", "На березі спокійних вод", "Сон смішної людини"]
+
+// let totalRating = 0;
+
+// for (const book of books) {
+//   totalRating += book.rating;
+// }
+
+// let averageRating = totalRating / books.length;
+// averageRating = averageRating.toFixed(1);
+// console.log(averageRating); // 8.2
+
+// ==================================Нотатки з записаної лекції===============================
+
+// const user = {
+//   name: "Yurii",
+//   age: 31,
+//   lang: {
+//     html: true,
+//     css: true,
+//     js: false,
+//   },
+//   hobby: {
+//     music: true,
+//     VRGames: true,
+//   },
+// };
+
+// for (const key in user) {
+//   console.log(key);
+//   console.log(user[key]);
+// }
+
+// const user = {
+//   name: "Yurii",
+//   age: 31,
+//   lang: {
+//     html: true,
+//     css: true,
+//     js: false,
+//   },
+//   hobby: {
+//     music: true,
+//     VRGames: true,
+//   },
+// };
+
+// // user.age = 32;
+// user.age += 1;
+
+// user.city = "Kyiv";
+
+// // console.log(user.age);
+// console.log(user);
+
+// -----------------Видалення------------------------------
+
+// const user = {
+//   name: "Yurii",
+//   age: 31,
+//   lang: {
+//     html: true,
+//     css: true,
+//     js: false,
+//   },
+//   hobby: {
+//     music: true,
+//     VRGames: true,
+//   },
+// };
+
+// delete user.city;
+// console.log(user);
+
+// --------------Заборона змінення об'єкту-------------------------
+
+// const user = {
+//   name: "Yurii",
+//   age: 31,
+//   lang: {
+//     html: true,
+//     css: true,
+//     js: false,
+//   },
+//   hobby: {
+//     music: true,
+//     VRGames: true,
+//   },
+// };
+
+// Object.freeze(user);
+
+// user.age = 100; // неспрацює
+// console.log(user);
