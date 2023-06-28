@@ -1921,16 +1921,301 @@
 
 // console.log(calcTotalPrice(stones, "Щебінь"));
 
-// // -----------------task 3 - комплексні завдання--------------------------------------
-// Напиши скрипт управління особистим кабінетом інтернет банку. Є об'єкт account в якому необхідно реалізувати методи для роботи з балансом та історією транзакцій.
+// // -----------------task 4 - комплексні завдання--------------------------------------
+// // Напиши скрипт управління особистим кабінетом інтернет банку. Є об'єкт account в якому необхідно реалізувати методи для роботи з балансом та історією транзакцій.
 
-// * Типів транзакцій всього два.
-// * можна покласти гроші або зняти з рахунку.
+// // * Типів транзакцій всього два.
+// // * можна покласти гроші або зняти з рахунку.
 
 // const Transaction = {
 //   DEPOSIT: "deposit",
 //   WITHDRAW: "withdraw",
 // };
 
-// * кожна транзакція це об'єкт з із вл-ми: id, type та amount
-//
+// Object.freeze(Transaction);
+
+// // * кожна транзакція це об'єкт з із вл-ми: id, type та amount
+// //
+
+// const account = {
+//   // поточний баланс рахунку
+//   balance: 0,
+
+//   // // історія транзакцій
+//   transactions: [{ id: 16, amount: 145, type: "deposit" }],
+
+//   //* метод створює та повертає об'єкт транзакцій.
+//   //* приймає суму та тип транзакції
+
+//   createTransaction(amount, type) {
+//     return {
+//       id: Date.now(),
+//       amount,
+//       type,
+//     };
+//   },
+
+//   //*метод, що відповідає за додавання суми до балансу.
+//   //*приймає суму транзакції.
+//   //* викликає createTransaction для створення об'єкта транзакції
+//   //* після чого додає його до історії транзакції
+
+//   deposit(amount) {
+//     if (amount <= 0) {
+//       return "Error";
+//     }
+//     const item = this.createTransaction(amount, Transaction.DEPOSIT);
+//     this.balance += amount;
+//     this.transactions.push(item);
+//   },
+
+//   //* Метоод, що відповідає за зняття суми з  балансу.
+//   //* Приймає суму транзакції.
+//   //* Викликає createTransaction для створення об'єкта транзакції.
+//   //* після чого додає його до історії транзакцій.
+
+//   //* Якщо amount більше ніж поточний баланс, виводить повідомлення про те що зняття такої суми не можливе, недостатньо коштів.
+
+//   withdraw(amount) {
+//     if (amount > this.balance || amount <= 0) {
+//       return "недостатньо коштів";
+//     }
+//     const item = this.createTransaction(amount, Transaction.WITHDRAW);
+//     this.transactions.push(item);
+//     this.balance -= amount;
+//   },
+
+//   //* метод повертає поточний баланс
+//   getBalance() {
+//     this.balance;
+//   },
+
+//   //* метод шукає та повертає об'єкт транзакції по id
+//   getTransactionDetails(id) {
+//     for (const transaction of this.transactions) {
+//       if (transaction.id === id) {
+//         return transaction;
+//       }
+//     }
+//     return "Empty";
+//   },
+
+//   //* метод повертає к-ть коштів певного типу транзакції з усієх історії транзакцій
+//   getTransactionTotal(type) {
+//     let sum = 0;
+//     for (const transaction of this.transactions) {
+//       if (transaction.type === type) {
+//         sum += transaction.amount;
+//       }
+//     }
+//     return sum;
+//   },
+// };
+
+// account.deposit(1);
+// account.deposit(1000);
+// account.deposit(10);
+// account.withdraw(123);
+
+// console.log(account.getTransactionTotal(Transaction.WITHDRAW));
+
+// console.log(account);
+
+// ------------------------------------нотатки з онлайн лекції модуль 3.1----------------------------------
+
+// два способи додавання нового ключа ключа
+
+// const user = {
+//   name: "Test",
+// };
+// console.log(user);
+
+// user.city = "Kyiv";
+// user["age"] = 31;
+// console.log(user);
+
+// ------------------------------------------------------------ПРАКТИКА---------------------------------------------------------
+
+// Task - 1-------------------------------------------------------------------------
+// Створи функцію яка буде приймати 3 параметри та формувати об'єкт покупки
+// 1 Назва продукту
+// 2 Кількість одиниць
+// 3 Ціна за 1 одиницю товару
+// Функція має повертати сформований об'єкт з ключами name, price, quantity, totalPrice.
+
+// function createBasket(product, quantity, price) {
+//   const totalPrice = quantity * price;
+//   const basket = {
+//     name: product,
+//     price,
+//     quantity,
+//     totalPrice,
+//   };
+//   return basket;
+// }
+// console.log(createBasket("pizza", 3, 120));
+// console.log(createBasket("apple", 13, 1200));
+
+// // або коротший запис
+
+// function createBasket(product, quantity, price) {
+//   const totalPrice = quantity * price;
+//   return {
+//     product,
+//     quantity,
+//     price,
+//     totalPrice,
+//   };
+// }
+
+// console.log(createBasket("pizza", 3, 120));
+// console.log(createBasket("apple", 13, 1200));
+
+// Task - 2---------------------------------------------------------------------------------
+// Створи функцію для ведення статистики комп'ютерного клубу. Функція приймає 1 параметр це об'єкт користувачів де ключ це ім'я користувача, а значення це час оренди у хвилинах.
+// Функція повертає рядок з інформацією про те скільки було користувачів та який середній час оренди комп'ютер.
+
+// const players = {
+//   Den: 60,
+//   Kate: 130,
+//   William: 45,
+//   Matthew: 120,
+//   Ethan: 40,
+//   David: 55,
+// };
+// function getTime(Obj) {
+//   const values = Object.values(Obj);
+//   let total = 0;
+//   for (const value of values) {
+//     total += value;
+//   }
+//   return `Count of players ${values.length}, average time ${
+//     total / values.length
+//   }`;
+// }
+
+// console.log(getTime(players));
+
+// Task - 3-------------------------------------------------------------------------------------
+// 1 Створити функцію яка буде приймати 2 параметри
+//    1 параметр масив
+//    2 параметр назва книги
+// Функція повертає Імена юзерів (формат стрінги) в яких є дана книга ("Harry Potter") \\\ "Anna, Oleksii"
+
+// 2 Порахувати вік всіх юзерів у яких є ключ age.
+
+// const friends = [
+//   { name: "Anna", books: ["Bible", "Harry Potter"], age: 21 },
+//   { name: "Bob", books: ["War and peace", "Romeo and Juliet"], age: 26 },
+//   { name: "Alice", books: ["War and peace", "Romeo and Juliet"] },
+//   {
+//     name: "Oleksii",
+//     books: ["Bible", "War and peace", "Harry Potter", "Romeo and Juliet"],
+//     age: 26,
+//   },
+// ];
+
+// -------1--------------
+
+// function getUsers(arr, bookName) {
+//   const userNames = [];
+//   for (const user of arr) {
+//     if (user.books.includes(bookName)) {
+//       userNames.push(user.name);
+//     }
+//   }
+//   return userNames.join(", ");
+// }
+
+// console.log(getUsers(friends, "Harry Potter"));
+
+// ----------2---------------
+// function getTotalAge(arr) {
+//   let totalAge = 0;
+//   for (const user of arr) {
+//     console.log(user.name, user.hasOwnProperty("age"));
+//     if (user.hasOwnProperty("age")) {
+//       totalAge += user.age;
+//     }
+//   }
+//   return totalAge;
+// }
+// console.log(getTotalAge(friends));
+
+// ---через key in Object
+
+// function getTotalAge(arr) {
+//   let totalAge = 0;
+//   for (const user of arr) {
+//     console.log(user.name, user.hasOwnProperty("age"));
+//     if ("age" in user) {
+//       // ключ в об'єкті
+//       totalAge += user.age;
+//     }
+//   }
+//   console.log(totalAge);
+// }
+// console.log(getTotalAge(friends));
+
+// ----Task - 4----------------------------------------------------------------------------------------------
+// 1 Створити метод об'єкту який буде приймати 1 параметр назву факультету та повертати списoк імен учнів факультету
+// 2 Створити метод об'єкту який буде приймати 1 параметр назву факультету та повертати кількість очків факультета
+
+const hogvarts = {
+  griffindor: [
+    {
+      name: "Harry",
+    },
+    {
+      name: "Hermiona",
+      points: 19,
+    },
+    {
+      name: "Ron",
+      points: 14,
+    },
+  ],
+
+  slizerin: [
+    {
+      name: "Draco",
+      points: 17,
+    },
+    {
+      name: "Goyl",
+      points: 14,
+    },
+    {
+      name: "Crabbe",
+      points: 5,
+    },
+  ],
+  getStudentsList(faculty) {
+    if (!(faculty in this)) {
+      return "Faculty not found";
+    }
+    const students = [];
+    for (const student of this[faculty]) {
+      students.push(student.name);
+    }
+    return students.join(", ");
+  },
+  getTotalPoints(faculty) {
+    if (!(faculty in this)) {
+      return "Faculty not found";
+    }
+    let totalPoints = 0;
+    for (const student of this[faculty]) {
+      if ("points" in student) {
+        totalPoints += student.points;
+      }
+    }
+    return totalPoints;
+  },
+};
+
+console.log(hogvarts.getStudentsList("griffindor"));
+console.log(hogvarts.getStudentsList("slizerin"));
+console.log(hogvarts.getStudentsList("slizedfgdfrin"));
+console.log(hogvarts.getTotalPoints("griffindor"));
+console.log(hogvarts.getTotalPoints("slizerin"));
