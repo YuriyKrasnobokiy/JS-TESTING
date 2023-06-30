@@ -2161,61 +2161,61 @@
 // 1 Створити метод об'єкту який буде приймати 1 параметр назву факультету та повертати списoк імен учнів факультету
 // 2 Створити метод об'єкту який буде приймати 1 параметр назву факультету та повертати кількість очків факультета
 
-const hogvarts = {
-  griffindor: [
-    {
-      name: "Harry",
-    },
-    {
-      name: "Hermiona",
-      points: 19,
-    },
-    {
-      name: "Ron",
-      points: 14,
-    },
-  ],
+// const hogvarts = {
+//   griffindor: [
+//     {
+//       name: "Harry",
+//     },
+//     {
+//       name: "Hermiona",
+//       points: 19,
+//     },
+//     {
+//       name: "Ron",
+//       points: 14,
+//     },
+//   ],
 
-  slizerin: [
-    {
-      name: "Draco",
-      points: 17,
-    },
-    {
-      name: "Goyl",
-      points: 14,
-    },
-    {
-      name: "Crabbe",
-      points: 5,
-    },
-  ],
-  getStudentsList(faculty) {
-    if (!(faculty in this)) {
-      return "Faculty not found";
-    }
-    const students = [];
-    for (const student of this[faculty]) {
-      students.push(student.name);
-    }
-    return students.join(", ");
-  },
-  getTotalPoints(faculty) {
-    if (!(faculty in this)) {
-      return "Faculty not found";
-    }
-    let totalPoints = 0;
-    for (const student of this[faculty]) {
-      if ("points" in student) {
-        totalPoints += student.points;
-      }
-    }
-    return totalPoints;
-  },
-};
+//   slizerin: [
+//     {
+//       name: "Draco",
+//       points: 17,
+//     },
+//     {
+//       name: "Goyl",
+//       points: 14,
+//     },
+//     {
+//       name: "Crabbe",
+//       points: 5,
+//     },
+//   ],
+//   getStudentsList(faculty) {
+//     if (!(faculty in this)) {
+//       return "Faculty not found";
+//     }
+//     const students = [];
+//     for (const student of this[faculty]) {
+//       students.push(student.name);
+//     }
+//     return students.join(", ");
+//   },
+//   getTotalPoints(faculty) {
+//     if (!(faculty in this)) {
+//       return "Faculty not found";
+//     }
+//     let totalPoints = 0;
+//     for (const student of this[faculty]) {
+//       if ("points" in student) {
+//         totalPoints += student.points;
+//       }
+//     }
+//     return totalPoints;
+//   },
+// };
 
-console.log(hogvarts.getStudentsList("griffindor"));
-console.log(hogvarts.getStudentsList("slizerin"));
-console.log(hogvarts.getStudentsList("slizedfgdfrin"));
-console.log(hogvarts.getTotalPoints("griffindor"));
-console.log(hogvarts.getTotalPoints("slizerin"));
+// console.log(hogvarts.getStudentsList("griffindor"));
+// console.log(hogvarts.getStudentsList("slizerin"));
+// console.log(hogvarts.getStudentsList("slizedfgdfrin"));
+// console.log(hogvarts.getTotalPoints("griffindor"));
+// console.log(hogvarts.getTotalPoints("slizerin"));
