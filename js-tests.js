@@ -2219,3 +2219,719 @@
 // console.log(hogvarts.getStudentsList("slizedfgdfrin"));
 // console.log(hogvarts.getTotalPoints("griffindor"));
 // console.log(hogvarts.getTotalPoints("slizerin"));
+
+//===================================== Модуль 3.2 Операція spread, rest, деструктуризація ================================================================
+
+// const temps = [14, -4, 25, 8, 11];
+
+// // В консолі буде масив
+// console.log(temps);
+// // ❌ Так не спрацює, тому що передаємо цілий масив
+// console.log(Math.max(temps)); // NaN
+
+// // В консолі буде набір окремих чисел
+// console.log(...temps);
+// // ✅ Розподілимо колекцію елементів у якості окремих аргументів
+// console.log(Math.max(...temps)); // 25
+
+// const temps = [14, -4, 25, 8, 11];
+// const copyOfTemps = [...temps];
+// console.log(copyOfTemps);
+
+// --------spread: створення нового масиву---
+
+// const lastWeekTemps = [14, 25, 11];
+// const currentWeekTemps = [23, 17, 18];
+// const allTemps = [...currentWeekTemps, ...lastWeekTemps, ...currentWeekTemps];
+// console.log(allTemps); // [23, 17, 18, 14, 25, 11, 23, 17, 18]
+
+// -----spread: створення нового об'єкта------
+
+// const first = { propA: 5, propB: 10 };
+// const second = { propC: 15 };
+// const third = { ...first, ...second };
+// console.log(third); // { propA: 5, propB: 10, propC: 15 }
+
+// ----------rest: збирання всіх аргументів функції-----------------------
+
+// function multiply(...args) {
+//   console.log(args); // масив усіх аргументів
+// }
+
+// multiply(1, 2);
+// multiply(1, 2, 3);
+// multiply(1, 2, 3, 4, "gfghfghfghfg");
+
+// -----------------rest: збирання частини аргументів функції------------------
+// function multiply(firstNumber, secondNumber, ...otherArgs) {
+//   console.log(firstNumber); // Значення першого аргументу
+//   console.log(secondNumber); // Значення другого аргументу
+//   console.log(otherArgs); // Масив інших аргументів
+// }
+
+// multiply(1, 2);
+// multiply(1, 2, 3);
+// multiply(1, 2, 3, 4, 5, 6, 7);
+
+// ----------------------------------------------------------Деструктуризація об'єктів------------------
+
+// const book = {
+//   title: "The Last Kingdom",
+//   author: "Bernard Cornwell",
+//   genres: ["historical prose", "adventure"],
+//   isPublic: true,
+//   rating: 8.38,
+// };
+
+// // Деструктуризуємо
+// const {
+//   title,
+//   author,
+//   isPublic,
+//   rating,
+//   coverImage: secondCoverImage = "https://via.placeholder.com/640/480",
+// } = book;
+// console.log(secondCoverImage); // undefined
+
+// const accessType = isPublic ? "публічному" : "закритому";
+// const message = `Книга ${title} автора ${author} з рейтингом ${rating} знаходиться в ${accessType} доступі.`;
+// console.log(message);
+
+// -------------Деструктуризація в циклах----------
+
+// const books = [
+//   {
+//     title: "The Last Kingdom",
+//     author: "Bernard Cornwell",
+//     rating: 8.38,
+//   },
+//   {
+//     title: "На березі спокійних вод",
+//     author: "Роберт Шеклі",
+//     rating: 8.51,
+//   },
+// ];
+
+// // for (const book of books) {
+// //   const { title, author, rating } = book;
+
+// //   console.log(title);
+// //   console.log(author);
+// //   console.log(rating);
+// // }
+
+// // Якщо в об'єкті небагато властивостей, можна виконати деструктуризацію безпосередньо у місці оголошення змінної book.
+
+// for (const { title, author, rating } of books) {
+//   console.log(title);
+//   console.log(author);
+//   console.log(rating);
+// }
+
+// -------------Глибока деструктуризація------
+// Для деструктуризації властивостей вкладених об'єктів використовуються ті самі принципи, що й в трьох попередніх вправах.
+
+// const user = {
+//   name: "Jacques Gluke",
+//   tag: "jgluke",
+//   stats: {
+//     followers: 5603,
+//     views: 4827,
+//     likes: 1308,
+//   },
+// };
+
+// const {
+//   name,
+//   tag,
+//   stats: { followers, views: userViews, likes: userLikes = 0 },
+// } = user;
+
+// console.log(name); // Jacques Gluke
+// console.log(tag); // jgluke
+// console.log(followers); // 5603
+// console.log(userViews); // 4827
+// console.log(userLikes); // 1308
+
+// --------------Деструктуризація масивів-----------------
+
+// const rgb = [200, 100, 255];
+
+// const [red, green, blue, alfa = 0.3, purtrt = 123] = rgb;
+
+// console.log(`R:${red},G:${green},B:${blue},Alfa:${alfa},P:${purtrt}`); // "R:200,G:100,B:255,Alfa:0.3"
+
+// ============================================Нотатки з записаної лекції=================================
+
+// -----------------------------------------------Глибока вкладеність об'єктів------------------------------------
+
+// const user = {
+//   name: "Test",
+//   age: 31,
+//   skills: {
+//     html: true,
+//     css: true,
+//     js: false,
+//     cars: {
+//       audi: "A6",
+//       bmw: "X5",
+//     },
+//   },
+// };
+// const {
+//   name,
+//   skills: {
+//     js,
+//     css: sass,
+//     cars: { audi },
+//   },
+// } = user;
+
+// console.log(audi);
+// console.log(sass);
+// console.log(js);
+
+// ------------------------
+
+// const user = {
+//   name: "Test",
+//   age: 31,
+//   skills: {
+//     html: true,
+//     css: true,
+//     js: false,
+//     cars: {
+//       audi: "A6",
+//       bmw: "X5",
+//     },
+//   },
+//   languages: [{ html: true }, { css: false }],
+// };
+
+// const {
+//   languages: [skillHtml, css],
+// } = user;
+
+// const { html } = skillHtml;
+// console.log(html);
+// console.log(css);
+
+// ----------------------------------------
+// // -----дефолтне значення----------
+// function foo({ name, car: { bmw = "None" } = {} }) {
+//   console.log(bmw);
+// }
+
+// foo({
+//   name: "User1",
+//   languages: "html",
+//   car: {
+//     audi: "A6",
+//     bmw: "X5",
+//   },
+// });
+
+// foo({
+//   name: "User1",
+//   languages: "css",
+// });
+
+// ===========================================spread============================================
+// const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+// const min = Math.min(...arr);
+// const max = Math.max(...arr);
+// console.log(min);
+// console.log(max);
+
+// // copy arr----------
+
+// const arr1 = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+// const arr2 = [...arr1];
+
+// console.log(arr1 === arr2); // false
+
+// ===========================================rest============================================
+
+// const arr1 = [3, 2, 1, 4, 5, 6, 7, 8, 9];
+// const [first, ...props] = arr1;
+// console.log(first);
+// // console.log(props);
+
+// for (let i = 0; i < props.length; i += 1) {
+//   props[i] *= first;
+// }
+// console.log(props);
+// ----------------------------------------
+
+// function foo(first, second, ...args) {
+//   console.log(args);
+// }
+// foo(1, 2, 3, 4, 5, 6, 7);
+
+// -----------------------------------------
+
+// const arr1 = [3, 2, 1, 4, 5, 6, 7, 8, 9];
+
+// function foo(first, second, ...rest) {
+//   console.log(first, second, rest);
+// }
+
+// foo(...arr1);
+
+// -----------------------------------------------------------Практика--------------------------------------------------
+
+// --------------------------task 1 - Деструктуризація--------------------
+// Перепиши функцію так, щоб вона приймала один об'єкт параметрів замість набору незалежних аргументів.
+
+// /**
+//  * РОзраховуємо індекс маси тіла людини
+//  * @param {Object} obj
+//  * @returns {Number} BMI
+//  */
+
+// function calcBMI({ weight, height }) {
+//   const numericWeight = Number(weight.replace(",", "."));
+
+//   const numericHeight = Number(height.replace(",", "."));
+
+//   return Number((numericWeight / numericHeight ** 2).toFixed(1));
+// }
+
+// // Було
+
+// // console.log(calcBMI("88,3", "1.75"));
+
+// // console.log(calcBMI("68,3", "1.65"));
+
+// // console.log(calcBMI("118,3", "1.95"));
+
+// // Стало
+// console.log(
+//   calcBMI({
+//     weight: "88,3",
+//     height: "1.75",
+//   }),
+// );
+
+// console.log(
+//   calcBMI({
+//     weight: "68,3",
+//     height: "1.65",
+//   }),
+// );
+
+// console.log(
+//   calcBMI({
+//     weight: "118,3",
+//     height: "1.95",
+//   }),
+// );
+
+// // --------------------------task 2 - Деструктуризація--------------------
+
+// // Перпиши ф-цію такб щоб вона приймала один об'єкт параметрів замість набору незалежних аргументів.
+
+// function printContactsInfo({ names, phones }) {
+//   const nameList = names.split(",");
+//   const phoneList = phones.split(",");
+
+//   for (let i = 0; i < nameList.length; i += 1) {
+//     console.log(`${nameList[i]}: ${phoneList[i]}`);
+//   }
+// }
+
+// printContactsInfo({
+//   names: "Jacob,William,Solomon,Artemis",
+//   phones: "89001234567,89001112233,890055566377,890055566300",
+// });
+
+// // --------------------------task 3 - Глибока деструктуризація--------------------
+// Перепиши ф-цію так, щоб вона приймала один об'єкт параметрів замість набору незалежних аргументів.
+
+// // було
+
+// function getBotReport(companyName, repairBots, defenceBots) {
+//   return `${companyName} has ${repairBots + defenceBots} bots in stock`;
+// }
+
+// console.log(getBotReport("Cyberdyne Systems", 150, 50));
+
+// // стало
+// console.log(
+//   getBotReport({
+//     companyName: "Cyberdyne Systems",
+//     repairBots: 150,
+//     defenceBots: 50,
+//   }),
+// );
+
+// function getBotReport({ companyName, repairBots, defenceBots }) {
+//   return `${companyName} has ${repairBots + defenceBots} bots in stock`;
+// }
+
+// // // --------------------------task 4 - Деструктуризація--------------------
+
+// // Перепиши ф-цію так, щоб вона приймала об'єкт параметрів із вл-ми companyName та stock та виводила репорт про кількість товарів на складі будь-яої компанії.
+
+// // було
+
+// // function getStockReport(companyName, stock) {
+// //   let total = 0;
+// //   for (const value of Object.values(stock)) {
+// //     total += value;
+// //   }
+// //   return `${companyName} has ${total} items in stock`;
+// // }
+
+// // console.log(
+// //   getStockReport("Cyberdyne Systems", {
+// //     repairBots: 150,
+// //     defenceBot: 50,
+// //   }),
+// // ); // 'Cyberdyne Systems has 200 items in stock'
+
+// // console.log(
+// //   getStockReport("Bellaci", {
+// //     shoes: 20,
+// //     skirts: 10,
+// //     hats: 5,
+// //   }),
+// // ); // 'Bellaci has 35 item in stock'
+
+// // стало
+
+// function getStockReport({ companyName, stock }) {
+//   let total = 0;
+//   for (const value of Object.values(stock)) {
+//     total += value;
+//   }
+//   return `${companyName} has ${total} items in stock`;
+// }
+
+// console.log(
+//   getStockReport({
+//     companyName: "Cyberdyne Systems",
+//     stock: {
+//       repairBots: 150,
+//       defenceBot: 50,
+//     },
+//   }),
+// ); // 'Cyberdyne Systems has 200 items in stock'
+
+// console.log(
+//   getStockReport({
+//     companyName: "Bellaci",
+//     stock: {
+//       shoes: 20,
+//       skirts: 10,
+//       hats: 5,
+//     },
+//   }),
+// ); // 'Bellaci has 35 item in stock'
+
+// // --------------------------task 5 - Операція spread--------------------
+// // Доповни ф-цію createContact(partialContact) так, щоб вона повертала новий об'єкт контакту з доданими вл-ми id та createdAt, а також list зі значенням "default" якщо в PartialContact немає такої властивості.
+
+// function createContact(partialContact) {
+//   return {
+//     id: generatedId(),
+//     createdAt: new Date(),
+//     list: "default",
+//     ...partialContact,
+//   };
+// }
+
+// console.log(
+//   createContact({
+//     name: "Mango",
+//     email: "mango@mail.com",
+//     list: "friends",
+//   }),
+// );
+
+// console.log(
+//   createContact({
+//     name: "Poly",
+//     email: "poly@mail.com",
+//   }),
+// );
+
+// function generatedId() {
+//   return "_" + Math.random().toString(36).substr(2, 9);
+// }
+
+// // --------------------------task 6 - Операція rest--------------------
+// // Напиши функцію transformUsername(user) так, щоб вона повертала новий об'єкт із властивістю fullName, замість firstName та lastName.
+
+// function transformUsername({ firstName, lastName, ...props }) {
+//   return {
+//     fullName: `${firstName} ${lastName}`,
+//     ...props,
+//   };
+// }
+
+// console.log(
+//   transformUsername({
+//     id: 1,
+//     firstName: "Jacob",
+//     lastName: "Mercer",
+//     email: "j.mercer@mail.com",
+//     friendCount: 40,
+//   }),
+// );
+
+// console.log(
+//   transformUsername({
+//     id: 2,
+//     firstName: "Adrian",
+//     lastName: "Long",
+//     email: "a.long@mail.com",
+//     friendCount: 27,
+//   }),
+// );
+
+// =========================================ДОДАТКОВА ПРАКТИКА 02.07.23==============================================================
+
+// // Напишіть функцію, яка створює масив з вказаною довжиною і заповнює його вказанним значення.
+// // Наприклад функція fillArray(3, 'a') повертає масив ['a', 'a', 'a'].
+
+// function fillArray(num, str) {
+//   let arr = [];
+//   for (i = 0; i < num; i += 1) {
+//     arr.push(str);
+//   }
+//   return arr;
+// }
+// console.log(fillArray(10, "k"));
+
+//====================================================================================================================
+
+// // Напиши скрипт, який порівняє два масива і виведе у консоль результат чи усі елементи у них однакові
+
+// const arr1 = [1, 4, 6, "color", 324, 232, "list", 11, 9, "dream", 34, 0, -30];
+// const arr2 = [6, "dream", -30, 11, 9, 1, 324, 34, "color", 4, 232, 0, "list"];
+
+// const arr3 = [4, 232, 6, -30, "color", 324, "list", 1, 11, 9, "dream", 34, 0];
+// const arr4 = ["color", 6, -30, 11, 9, 1, "dream", 324, 34, 4, 232, 0, "list"];
+
+// const arr5 = [1, 4, 6, "color", "list", 11, 9, "dream", 34, 0, -30, "lesson"];
+// const arr6 = [6, 324, "dream", -30, 9, 8, 34, "color", 4, 232, 0, "list", 11];
+
+// const arr7 = [1, 4, 6, "color", 324, 232, "list", 11, 9, "dream", 34, 0, -30];
+// const arr8 = [6, "dream", -30, 10, 9, 1, 324, 34, "color", 4, 232, 0, "list"];
+
+// function foo(arr1, arr2) {
+//   if (arr1.length !== arr2.length) {
+//     return false;
+//   }
+//   for (const elem of arr1) {
+//     if (!arr2.includes(elem)) {
+//       return false;
+//     }
+//     return true;
+//   }
+// }
+// console.log(foo(arr1, arr2));
+// console.log(foo(arr3, arr4));
+// console.log(foo(arr5, arr6));
+// console.log(foo(arr7, arr8));
+
+//===========================================================================================================
+
+// // Написати функцію, котра створить новий масив в якому
+// // не буде значень, які приводяться до false
+
+// const array = [
+//   1,
+//   0,
+//   54,
+//   "doc",
+//   null,
+//   "jpg",
+//   undefined,
+//   "",
+//   "png",
+//   "exe",
+//   false,
+//   "mp4",
+//   NaN,
+//   "hbs",
+// ];
+
+// function foo(array) {
+//   let newArr = [];
+//   for (const elem of array) {
+//     if (!elem) continue;
+//     newArr.push(elem);
+//   }
+//   return newArr;
+// }
+// console.log(foo(array));
+
+//===============================================================================================================
+
+// // Напишіть функцію caclculateAverage()
+// // яка приймає довільну кількість
+// // аргументів і повертає їхнє середнє значення.
+// // Додати перевірку, що аргументи це числа.
+
+// function caclculateAverage(...args) {
+//   let sum = 0;
+//   let count = 0;
+//   for (const elem of args) {
+//     if (typeof elem !== "number") {
+//       continue;
+//     }
+//     count += 1;
+//     sum += elem;
+//   }
+//   return sum / count;
+// }
+// console.log(caclculateAverage(1, 2, 3, 4, 5, 6, 7, fdfgdfgdfg));
+
+// ========================================================================================================
+
+// // Напишіть функцію checkKeyInObject(), яка приймає 2 параметри obj і key.
+// // Функція буде перебирати об'єкт.
+// // Якщо об'єкт має такий ключ - поверне true, в іншому випадку - false.
+
+// // const user = {
+// //   name: "Igor",
+// //   car: "Mercedes",
+// //   carColor: "black",
+// // };
+
+// // function checkKeyInObject(obj, key) {
+// //   for (const objKey in obj) {
+// //     if (key === objKey) {
+// //       return true;
+// //     }
+// //   }
+// //   return false;
+// // }
+
+// // console.log(checkKeyInObject(user, "dfd"));
+// // console.log(checkKeyInObject(user, "car"));
+
+// // інший варіант=========================
+
+// // const user = {
+// //   name: "Igor",
+// //   car: "Mercedes",
+// //   carColor: "black",
+// // };
+
+// // function checkKeyInObject(obj, key) {
+// //   return Object.keys(obj).includes(key);
+// // }
+
+// // console.log(checkKeyInObject(user, "dfd"));
+// // console.log(checkKeyInObject(user, "car"));
+
+// // інший варіант============
+
+// const user = {
+//   name: "Igor",
+//   car: "Mercedes",
+//   carColor: "black",
+// };
+
+// function checkKeyInObject(obj, key) {
+//   return obj.hasOwnProperty(key);
+// }
+
+// console.log(checkKeyInObject(user, "dfd"));
+// console.log(checkKeyInObject(user, "name"));
+// console.log(checkKeyInObject(user, "car"));
+// console.log(checkKeyInObject(user, "carColor"));
+
+// ==========================================================================================================
+
+// // Створіть об'єкт calculator із трьома методами:
+// //read(a, b) - приймає два аргументи та зберігає їх як властивості об'єкта
+// //sum() - повертає суму збережених значень
+// //mult() - перемножує збережені значення та повертає результат
+
+// // const calculator = {
+// //   read(a, b) {},
+// //   sum() {},
+// //   mult() {},
+// // };
+
+// const calculator = {
+//   read(a, b) {
+//     this.value1 = a;
+//     this.value2 = b;
+//   },
+//   sum() {
+//     return this.value1 + this.value2;
+//   },
+//   mult() {
+//     return this.value1 * this.value2;
+//   },
+// };
+
+// calculator.read(5, 8);
+// console.log(calculator);
+// calculator.sum(5, 8);
+// console.log(calculator.sum());
+// calculator.mult(5, 8);
+// console.log(calculator.mult());
+
+// ==========================================================================================================
+
+// //. Напишіть функцію updateObject, яка приймає об'єкт і ключі (ключів може бути довільна кількість)
+// //які необхідно видалити з об'єкту.
+// //Функція повертає новий об'єкт без зазначених параметрів.
+// //Очікуваний результат ({a: 1, b: 2}, 'b') => {a: 1}
+
+// function updateObject(obj, ...keys) {
+//   const newObject = { ...obj };
+
+//   for (const key of keys) {
+//     delete newObject[key];
+//   }
+//   return newObject;
+// }
+// console.log(updateObject({ a: 1, b: 2, c: 3 }, "b", "a"));
+
+// =============================================================================================
+
+// Напишіть функцію getPropertyValues(), яка приймає масив об'єктів
+// та ключ, і повертає масив значень цього ключа у кожному об'єкті
+
+// const myArr = [
+//   { name: "John", age: 30 },
+//   { name: "Jane", age: 25 },
+//   { name: "Bob", age: 40 },
+// ];
+
+// function getPropertyValues(arr, key) {
+//   let value = [];
+//   for (const element of arr) {
+//     value.push(element[key]);
+//   }
+//   return value;
+// }
+// console.log(getPropertyValues(myArr, "name"));
+// console.log(getPropertyValues(myArr, "age"));
+
+// ======================================================================================================
+
+//  Напишіть функцію, яка приймає як параметр об'єкт
+//і повертає масив значень у форматі [[key, value], [key, value], ...]
+// де key і value - відповідно ключ і значення переданного об'екту.
+
+// const user = {
+//   name: "John",
+//   surName: "Stones",
+//   age: 20,
+//   hobby: "tenis",
+//   haveCar: true,
+//   merried: false,
+// };
+
+// function foo(obj) {
+//   return Object.entries(obj);
+// }
+// console.log(foo(user));
