@@ -581,47 +581,631 @@
 
 // ----------------------------------------------------------------------
 
-// Task-4
-// Напишіть функцію getProductDetails, яка приймає ідентифікатор товару productId та дві колбек-функції successCallback та errorCallback. Функція getProductDetails повинна отримати деталі про вказаний товар та передати їх у successCallback.  У випадку помилки, викликається errorCallback і передається повідомлення про помилку.
-const products = [
-  {
-    id: 1,
-    name: "Телефон",
-    price: 10000,
-    description: "Смартфон з високоякісним дисплеєм та потужним процесором.",
-  },
-  {
-    id: 2,
-    name: "Ноутбук",
-    price: 25000,
-    description: "Легкий та потужний ноутбук для роботи та розваг.",
-  },
-  {
-    id: 3,
-    name: "Планшет",
-    price: 8000,
-    description: "Компактний планшет для перегляду контенту.",
-  },
-];
+// // Task-4
+// // Напишіть функцію getProductDetails, яка приймає ідентифікатор товару productId та дві колбек-функції successCallback та errorCallback. Функція getProductDetails повинна отримати деталі про вказаний товар та передати їх у successCallback.  У випадку помилки, викликається errorCallback і передається повідомлення про помилку.
+// const products = [
+//   {
+//     id: 1,
+//     name: "Телефон",
+//     price: 10000,
+//     description: "Смартфон з високоякісним дисплеєм та потужним процесором.",
+//   },
+//   {
+//     id: 2,
+//     name: "Ноутбук",
+//     price: 25000,
+//     description: "Легкий та потужний ноутбук для роботи та розваг.",
+//   },
+//   {
+//     id: 3,
+//     name: "Планшет",
+//     price: 8000,
+//     description: "Компактний планшет для перегляду контенту.",
+//   },
+// ];
 
-function getProductDetails(id, succes, error) {
-  for (const product of products) {
-    if (product.id === id) {
-      succes(product);
-      return;
-    }
-  }
-  error();
-}
+// function getProductDetails(id, succes, error) {
+//   for (const product of products) {
+//     if (product.id === id) {
+//       succes(product);
+//       return;
+//     }
+//   }
+//   error();
+// }
 
-getProductDetails(3, handleSuccess, handleError);
+// getProductDetails(3, handleSuccess, handleError);
 
-// getProductDetails(11, handleSuccess, handleError);
+// // getProductDetails(11, handleSuccess, handleError);
 
-function handleSuccess(message) {
-  console.log(`✅ Success!`, message);
-}
+// function handleSuccess(message) {
+//   console.log(`✅ Success!`, message);
+// }
 
-function handleError(productId) {
-  console.log(`❌ Error! Product not found`);
-}
+// function handleError(productId) {
+//   console.log(`❌ Error! Product not found`);
+// }
+
+// =====================================Перебираючі методи масивів======================================================================================
+
+// // ================Чисті функції=======================
+
+// const pureMultiply = (array, value) => {
+//   const newArray = [];
+
+//   array.forEach((element) => {
+//     newArray.push(element * value);
+//   });
+
+//   return newArray;
+// };
+
+// const numbers = [1, 2, 3, 4, 5];
+// const doubledNumbers = pureMultiply(numbers, 2);
+
+// // Мутація вихідних даних не відбулася
+// console.log(numbers); // [1, 2, 3, 4, 5]
+// // Функція повернула новий масив зі зміненими даними
+// console.log(doubledNumbers); // [2, 4, 6, 8, 10]
+
+// // ================Метод Map()=======================
+
+// const planets = ["Земля", "Марс", "Венера", "Юпітер"];
+
+// const planetsInUpperCase = planets.map((planet) => planet.toUpperCase());
+// console.log(planetsInUpperCase); // ['ЗЕМЛЯ', 'МАРС', 'ВЕНЕРА', 'ЮПІТЕР']
+
+// const planetsInLowerCase = planets.map((planet) => planet.toLowerCase());
+// console.log(planetsInLowerCase); // ['земля', 'марс', 'венера', 'юпітер']
+
+// // Оригінальний масив не змінився
+// console.log(planets); // ['Земля', 'Марс', 'Венера', 'Юпітер']
+
+// // ================Масив об'єктів і метод map()=======================
+// // ================Масив об'єктів і метод map()=======================
+
+// const students = [
+//   { name: "Манго", score: 83 },
+//   { name: "Полі", score: 59 },
+//   { name: "Аякс", score: 37 },
+//   { name: "Ківі", score: 94 },
+//   { name: "Х'юстон", score: 64 },
+// ];
+
+// const names = students.map((student) => student.name);
+// console.log(names); // ['Манго', 'Полі', 'Аякс', 'Ківі', 'Х'юстон']
+
+// // ================Метод flatMap()=======================
+
+// const students = [
+//   { name: "Манго", courses: ["математика", "фізика"] },
+//   { name: "Полі", courses: ["інформатика", "математика"] },
+//   { name: "Ківі", courses: ["фізика", "біологія"] },
+// ];
+
+// students.map((student) => student.courses);
+// console.log(students.map((student) => student.courses));
+// // [['математика', 'фізика'], ['інформатика', 'математика'], ['фізика', 'біологія']]
+
+// students.flatMap((student) => student.courses);
+// console.log(students.flatMap((student) => student.courses));
+// // ['математика', 'фізика', 'інформатика', 'математика', 'фізика', 'біологія'];
+
+// // ================Метод filter()=======================
+
+// const values = [51, -3, 27, 21, -68, 42, -37];
+
+// const positiveValues = values.filter((value) => value >= 0);
+// console.log(positiveValues);
+
+// const negativeValues = values.filter((value) => value < 0);
+// console.log(negativeValues);
+
+// const bigValues = values.filter((value) => value > 100);
+// console.log(bigValues);
+
+// console.log(values);
+
+// // ================Фільтрація унікальних елементів=======================
+
+// const students = [
+//   { name: "Манго", courses: ["математика", "фізика"] },
+//   { name: "Полі", courses: ["інформатика", "математика"] },
+//   { name: "Ківі", courses: ["фізика", "біологія"] },
+// ];
+
+// const allCourses = students.flatMap((student) => student.courses);
+// // ['математика', 'фізика', 'інформатика', 'математика', 'фізика', 'біологія'];
+// const uniqueCourses = allCourses.filter(
+//   (course, index, array) => array.indexOf(course) === index,
+// );
+// console.log(uniqueCourses);
+
+// // ================Масив об'єктів=======================
+
+// const LOW_SCORE = 50;
+// const HIGH_SCORE = 80;
+// const students = [
+//   { name: "Манго", score: 83 },
+//   { name: "Полі", score: 59 },
+//   { name: "Аякс", score: 37 },
+//   { name: "Ківі", score: 94 },
+//   { name: "Х'юстон", score: 64 },
+// ];
+
+// const best = students.filter((student) => student.score >= HIGH_SCORE);
+// console.log(best);
+
+// const worst = students.filter((student) => student.score < LOW_SCORE);
+// console.log(worst);
+
+// const average = students.filter(
+//   ({ score }) => score >= LOW_SCORE && score < HIGH_SCORE,
+// );
+// console.log(average);
+
+// // ================Метод find()=======================
+
+// const colorPickerOptions = [
+//   { label: "red", color: "#F44336" },
+//   { label: "green", color: "#4CAF50" },
+//   { label: "blue", color: "#2196F3" },
+//   { label: "pink", color: "#E91E63" },
+//   { label: "indigo", color: "#3F51B5" },
+// ];
+
+// colorPickerOptions.find((option) => option.label === "blue"); // { label: 'blue', color: '#2196F3' }
+// colorPickerOptions.find((option) => option.label === "pink"); // { label: 'pink', color: '#E91E63' }
+// colorPickerOptions.find((option) => option.label === "green"); // { label: "green", color: "#4CAF50" }
+// colorPickerOptions.find((option) => option.label === "white"); // undefined
+
+// // ================Метод findIndex()=======================
+
+// const colorPickerOptions = [
+//   { label: "red", color: "#F44336" },
+//   { label: "green", color: "#4CAF50" },
+//   { label: "blue", color: "#2196F3" },
+//   { label: "pink", color: "#E91E63" },
+//   { label: "indigo", color: "#3F51B5" },
+// ];
+
+// colorPickerOptions.findIndex((option) => option.label === "blue"); // 2
+// colorPickerOptions.findIndex((option) => option.label === "red"); // 0
+// colorPickerOptions.findIndex((option) => option.label === "pink"); // 3
+// colorPickerOptions.findIndex((option) => option.label === "white"); // -1
+
+// console.log(colorPickerOptions.findIndex((option) => option.label === "blue")); // 2
+// console.log(colorPickerOptions.findIndex((option) => option.label === "red")); // 0
+// console.log(colorPickerOptions.findIndex((option) => option.label === "pink")); // 3
+// console.log(colorPickerOptions.findIndex((option) => option.label === "white")); // -1
+
+// // ================Методи every() і some()=======================
+
+// // Усі елементи більші або дорівнюють нулю? - так
+// [1, 2, 3, 4, 5].every((value) => value >= 0); // true
+// console.log([1, 2, 3, 4, 5].every((value) => value >= 0));
+
+// // Усі елементи більші або дорівнюють нулю? - ні
+// [1, 2, 3, -10, 4, 5].every((value) => value >= 0); // false
+// console.log([1, 2, 3, -10, 4, 5].every((value) => value >= 0));
+
+// // -----------------------
+
+// // Чи є хоча б один елемент, що більший або дорівнює нулю? - так
+// [1, 2, 3, 4, 5].some((value) => value >= 0); // true
+
+// // Чи є хоча б один елемент, що більший або дорівнює нулю? - так
+// [-7, -20, 3, -10, -14].some((value) => value >= 0); // true
+
+// // Чи є хоча б один елемент, що менший нуля? - ні
+// [1, 2, 3, 4, 5].some((value) => value < 0); // false
+
+// // Чи є хоча б один елемент, що менший нуля? - так
+// [1, 2, 3, -10, 4, 5].some((value) => value < 0); // true
+
+// // ------------------Масив об'єктів-------------
+
+// const fruits = [
+//   { name: "apples", amount: 100 },
+//   { name: "bananas", amount: 0 },
+//   { name: "grapes", amount: 50 },
+// ];
+
+// // every поверне true тільки, якщо усіх фруктів буде більше 0 штук
+// const allAvailable = fruits.every((fruit) => fruit.amount > 0); // false
+// console.log(allAvailable);
+
+// // some поверне true, якщо хоча б одного фрукту буде більше 0 штук
+// const anyAvailable = fruits.some((fruits) => fruits.amount > 0); // true
+// console.log(anyAvailable);
+
+// // ================Метод reduce()=======================
+
+// const total = [2, 7, 3, 14, 6].reduce((previousValue, number) => {
+//   return previousValue + number;
+// }, 0);
+
+// console.log(total); // 32
+
+// // ---------------Масив об'єктів------------------
+
+// const students = [
+//   { name: "Манго", score: 83 },
+//   { name: "Полі", score: 59 },
+//   { name: "Аякс", score: 37 },
+//   // { name: "Ківі", score: 94 },
+//   // { name: "Х'юстон", score: 64 },
+// ];
+
+// const totalScore = students.reduce((total, student) => {
+//   return total + student.score;
+// }, 0);
+
+// const averageScore = totalScore / students.length;
+// console.log(totalScore);
+// console.log(averageScore);
+
+// // -------------Просунутий reduce()---------
+
+// const tweets = [
+//   { id: "000", likes: 5, tags: ["js", "nodejs"] },
+//   { id: "001", likes: 2, tags: ["html", "css"] },
+//   { id: "002", likes: 17, tags: ["html", "js", "nodejs"] },
+//   { id: "003", likes: 8, tags: ["css", "react"] },
+//   { id: "004", likes: 0, tags: ["js", "nodejs", "react"] },
+// ];
+
+// // Пройдемо по всіх елементах колекції і додамо значення властивості likes
+// // до акумулятора, початкове значення якого вкажемо 0.
+// const likes = tweets.reduce((totalLikes, tweet) => totalLikes + tweet.likes, 0);
+
+// console.log(likes); // 32
+
+// // Мабуть, підрахунок лайків - не одиночна операція, тому напишемо функцію
+// // для підрахунку лайків з колекції
+// const countLikes = (tweets) => {
+//   return tweets.reduce((totalLikes, tweet) => totalLikes + tweet.likes, 0);
+// };
+
+// console.log(countLikes(tweets)); // 32
+
+// // ---------зберемо усі теги в масив----------------
+
+// // const tweets = [
+// //   { id: "000", likes: 5, tags: ["js", "nodejs"] },
+// //   { id: "001", likes: 2, tags: ["html", "css"] },
+// //   { id: "002", likes: 17, tags: ["html", "js", "nodejs"] },
+// //   { id: "003", likes: 8, tags: ["css", "react"] },
+// //   { id: "004", likes: 0, tags: ["js", "nodejs", "react"] },
+// // ];
+
+// // // Пройдемо по всіх елементах колекції і додамо значення властивості tags
+// // // до акумулятора, початкове значення якого вкажемо порожнім масивом [].
+// // // На кожній ітерації пушимо в акумулятор усі елементи tweet.tags і повертаємо його.
+// // const tags = tweets.reduce((allTags, tweet) => {
+// //   allTags.push(...tweet.tags);
+
+// //   return allTags;
+// // }, []);
+
+// // console.log(tags);
+
+// // // Мабуть, збирання тегів - не одиночна операція, тому напишемо функцію
+// // // для збирання тегів з колекції
+// // const getTags = (tweets) =>
+// //   tweets.reduce((allTags, tweet) => {
+// //     allTags.push(...tweet.tags);
+
+// //     return allTags;
+// //   }, []);
+
+// // console.log(getTags(tweets));
+
+// // -------------Рахуємо к-ть унікальних тегів--------------------------
+
+// const tweets = [
+//   { id: "000", likes: 5, tags: ["js", "nodejs"] },
+//   { id: "001", likes: 2, tags: ["html", "css"] },
+//   { id: "002", likes: 17, tags: ["html", "js", "nodejs"] },
+//   { id: "003", likes: 8, tags: ["css", "react"] },
+//   { id: "004", likes: 0, tags: ["js", "nodejs", "react"] },
+// ];
+
+// const getTags = (tweets) =>
+//   tweets.reduce((allTags, tweet) => {
+//     allTags.push(...tweet.tags);
+
+//     return allTags;
+//   }, []);
+
+// const tags = getTags(tweets);
+
+// // Винесемо callback-функцію окремо, а в reducе передамо посилання на неї.
+// // Це стандартна практика, якщо callback-функція досить велика.
+
+// // Якщо в об'єкті-акумуляторі acc відсутня своя властивість з ключем tag,
+// // то створюємо її і записуємо їй значення 0.
+// // В іншому випадку збільшуємо значення на 1.
+// const getTagStats = (acc, tag) => {
+//   if (!acc.hasOwnProperty(tag)) {
+//     acc[tag] = 0;
+//   }
+
+//   acc[tag] += 1;
+
+//   return acc;
+// };
+
+// // Початкове значення акумулятора - це порожній об'єкт {}
+// const countTags = (tags) => tags.reduce(getTagStats, {});
+
+// const tagCount = countTags(tags);
+// console.log(tagCount);
+
+// =================метод Sort()=============================================
+
+// //-----------сортування об'єктів-----------
+
+// const students = [
+//   { name: "Манго", score: 83 },
+//   { name: "Полі", score: 59 },
+//   { name: "Аякс", score: 37 },
+//   { name: "Ківі", score: 94 },
+// ];
+
+// const inAscendingScoreOrder = students.sort(
+//   (firstStudent, secondStudent) => firstStudent.score - secondStudent.score,
+// );
+
+// // const inDescendingScoreOrder = students.sort(
+// //   (firstStudent, secondStudent) => secondStudent.score - firstStudent.score,
+// // );
+
+// // const inAlphabeticalOrder = students.sort((firstStudent, secondStudent) =>
+// //   firstStudent.name.localeCompare(secondStudent.name),
+// // );
+
+// console.log(inAscendingScoreOrder);
+// // console.log(inDescendingScoreOrder);
+// // console.log(inAlphabeticalOrder);
+
+// // ================Ланцюжки методів=======================
+
+// const students = [
+//   { name: "Манго", score: 83, courses: ["математика", "фізика"] },
+//   { name: "Полі", score: 59, courses: ["інформатика", "математика"] },
+//   { name: "Аякс", score: 37, courses: ["фізика", "біологія"] },
+//   { name: "Ківі", score: 94, courses: ["література", "інформатика"] },
+// ];
+
+// const sortedByAscendingScore = [...students].sort((a, b) => a.score - b.score);
+// const names = sortedByAscendingScore.map((student) => student.name);
+
+// console.log(names); // ['Аякс', 'Полі', 'Манго', 'Ківі']
+
+// ====================================Нотатки з записаної лекції==============================================
+
+// Практика
+
+// // Task-1
+// // Напишіть функцію, яка використовує метод map, щоб створити новий масив об'єктів, в якому буде інформація про середній бал кожного студента.
+
+// const students = [
+//   { name: "John", grades: [80, 85, 90] },
+//   { name: "Alice", grades: [90, 95, 92] },
+//   { name: "Bob", grades: [70, 80, 75] },
+//   { name: "Emily", grades: [95, 92, 88] },
+//   { name: "David", grades: [85, 88, 90] },
+// ];
+
+// function getAverage(arr) {
+//   return arr.map(({ name, grades }) => {
+//     const total = grades.reduce((acc, item) => acc + item, 0);
+//     const obj = {
+//       name,
+//       average: Math.round(total / grades.length),
+//     };
+//     return obj;
+//   });
+// }
+// console.log(getAverage(students));
+
+// -----------------------------------------------------------
+
+// // Task-2
+// // Напишіть функцію, яка використовує метод filter, щоб створити новий масив, в якому будуть тільки студенти які старше 20 років
+
+// const students = [
+//   { name: "John", age: 20, gpa: 3.8 },
+//   { name: "Alice", age: 21, gpa: 3.2 },
+//   { name: "Bob", age: 19, gpa: 3.5 },
+//   { name: "Emily", age: 22, gpa: 3.9 },
+//   { name: "David", age: 20, gpa: 3.7 },
+// ];
+
+// function getAdult(arr) {
+//   // const result = arr.filter((student) => student.age > 20);
+//   // return result;
+
+//   // -----або по-дорослому-----
+//   return arr.filter(({ age }) => age > 20);
+// }
+
+// console.log(getAdult(students));
+
+// --------------------------------------------------------------------
+
+// // Task-3
+// // Напишіть функцію, яка використовує метод find, щоб знайти книжку за її назвою (title)
+// const books = [
+//   {
+//     title: "JavaScript: The Good Parts",
+//     author: "Douglas Crockford",
+//     year: 2008,
+//   },
+//   {
+//     title: "Clean Code: A Handbook of Agile Software Craftsmanship",
+//     author: "Robert C. Martin",
+//     year: 2008,
+//   },
+//   {
+//     title: "The Pragmatic Programmer: Your Journey to Mastery",
+//     author: "Andrew Hunt, David Thomas",
+//     year: 1999,
+//   },
+//   {
+//     title: "Design Patterns: Elements of Reusable Object-Oriented Software",
+//     author: "Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides",
+//     year: 1994,
+//   },
+//   {
+//     title: "Refactoring: Improving the Design of Existing Code",
+//     author: "Martin Fowler",
+//     year: 1999,
+//   },
+// ];
+
+// function getBook(arr, title) {
+//   // const book = arr.find((book) => book.title === title);
+
+//   // return book || "Not found";
+
+//   // // --------Або по-дорослому----------
+
+//   return arr.find(({ title: bookTitle }) => bookTitle === title) || "Not found";
+// }
+
+// console.log(
+//   getBook(books, "The Pragmatic Programmer: Your Journey to Mastery"),
+// );
+// console.log(getBook(books, "Qwerty"));
+
+// ---------------------------------------------------------
+
+// // Task-4
+// // Напишіть функцію, яка використовує метод reduce, щоб обчислити загальну вартість всіх товарів у масиві, яка розраховується як добуток ціни товару на його кількість, а потім сумується з іншими товарами. Результат повинен бути загальною вартістю всіх товарів.
+
+// const products = [
+//   { id: 1, name: "T-shirt", price: 20, quantity: 3 },
+//   { id: 2, name: "Jeans", price: 50, quantity: 2 },
+//   { id: 3, name: "Sneakers", price: 80, quantity: 1 },
+//   { id: 4, name: "Hat", price: 15, quantity: 4 },
+//   { id: 5, name: "Socks", price: 5, quantity: 6 },
+// ];
+
+// function getTotal(arr) {
+//   // const total = arr.reduce((acc, product) => {
+//   //   acc += product.price * product.quantity;
+//   //   return acc;
+//   // }, 0);
+//   // return total;
+
+//   // --------або по-дорослому---------
+//   return arr.reduce((acc, { price, quantity }) => (acc += price * quantity), 0);
+// }
+
+// console.log(getTotal(products));
+
+// -----------------------------------------------------------
+
+// // Task-5
+// // Напишіть функцію, яка використовує метод sort, щоб відсортувати книжки за роком видання у спадаючому порядку. Результат повинен бути відсортованим масивом книжок за роком видання.
+
+// const books = [
+//   {
+//     title: "JavaScript: The Good Parts",
+//     author: "Douglas Crockford",
+//     year: 2008,
+//   },
+//   {
+//     title: "Clean Code: A Handbook of Agile Software Craftsmanship",
+//     author: "Robert C. Martin",
+//     year: 2008,
+//   },
+//   {
+//     title: "The Pragmatic Programmer: Your Journey to Mastery",
+//     author: "Andrew Hunt, David Thomas",
+//     year: 1999,
+//   },
+//   {
+//     title: "Design Patterns: Elements of Reusable Object-Oriented Software",
+//     author: "Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides",
+//     year: 1994,
+//   },
+//   {
+//     title: "Refactoring: Improving the Design of Existing Code",
+//     author: "Martin Fowler",
+//     year: 1999,
+//   },
+// ];
+
+// function sortDesc(arr) {
+//   // const result = [...arr].sort((a, b) => b.year - a.year);
+//   // return result;
+
+//   // ------Або по-дорослому--------------
+
+//   return [...arr].sort((a, b) => b.year - a.year);
+
+//   //   // ----------якщо треба і автора і рік видання---------------------
+
+//   //   return [...arr]
+//   //     .sort((a, b) => b.year - a.year)
+//   //     .map(({ author, year }) => ({ author, year }));
+// }
+
+// console.log(sortDesc(books));
+
+// -----------------------------------------------------------
+
+// // Task-6
+// // Напишіть функцію, яка використовує перебираючі методи масиву map та filter, щоб отримати масив назв продуктів, ціна яких менше 2 доларів та відсортуй їх за алфавітним порядком.
+
+// const products = [
+//   { id: 2, name: "Banana", price: 0.99 },
+//   { id: 1, name: "Apple", price: 1.99 },
+//   { id: 3, name: "Orange", price: 2.49 },
+//   { id: 4, name: "Grapes", price: 3.99 },
+// ];
+
+// function getProducts(arr) {
+//   // const min = arr.filter((product) => product.price < 2);
+//   // const names = min.map((product) => product.name);
+//   // names.sort((a, b) => a.localeCompare(b));
+
+//   // return names;
+
+//   // -----------за доп чейнінга------------------
+
+//   return arr
+//     .filter(({ price }) => price < 2)
+//     .map(({ name }) => name)
+//     .sort((a, b) => a.localeCompare(b));
+// }
+// console.log(getProducts(products));
+
+// -----------------------------------------------------------
+
+// // Task-7 HARD 😈
+
+// // Є рядок в якому довільна кількість літер, гарантовано в рядку немає пробілів та розділових знаків, потрібно повернути об'єкт де кожна літера буде ключем, а кількість разів яку вона дублюється буде значенням ключа
+// const str = "absdabsrgbadgtdswwbetflg";
+// // Результат на який очікуємо
+// // const obj = {
+// //     a: 3,
+// //     b: 4,
+// //     s: 3,
+// //     // ...
+// // }
+
+// const obj = str.split("").reduce((acc, item) => {
+//   if (acc.hasOwnProperty(item)) {
+//     // item in acc
+//     acc[item] += 1;
+//   } else {
+//     acc[item] = 1;
+//   }
+//   return acc;
+// }, {});
+
+// console.log(obj);
