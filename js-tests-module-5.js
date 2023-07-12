@@ -1,3 +1,4 @@
+// // ============================Модуль 5.1 Ключове слово this=======================================
 // // ============================Нотатки з конспекта=======================================
 // // ------------this в методі об'єкта---------------------------
 
@@ -712,3 +713,156 @@
 // console.log(undefined ?? "hello");
 // console.log(null ?? undefined);
 // console.log(undefined ?? null);
+
+// // ============================Модуль 5.2 Прототипи та класи=======================================
+
+// ----------------ОПП---------
+
+// const employee = {
+//   baseSalary: 30000,
+//   overtime: 10,
+//   rate: 20,
+//   getWage() {
+//     return this.baseSalary + this.overtime * this.rate;
+//   },
+// };
+
+// employee.getWage();
+// console.log(employee.getWage());
+
+// --------------------------Прототип об'єкта-----------------------
+
+// Метод Object.create(obj) створює і повертає новий об'єкт, зв'язуючи його з об'єктом obj.
+
+// const animal = {
+//   legs: 4,
+// };
+// const dog = Object.create(animal);
+// dog.name = "Манго";
+
+// const cat = Object.create(null);
+// cat.name = "Poly";
+
+// console.log(dog); // { name: 'Манго', __proto__: animal }
+// console.log(animal.isPrototypeOf(dog)); // true
+// console.log(animal.isPrototypeOf(cat)); // false
+
+// console.log(dog.hasOwnProperty("name")); // true
+
+// console.log(dog.name); // 'Манго'
+// console.log(cat.name); // "Poly"
+
+// ---------------Метод hasOwnProperty()-----------------------------
+
+// const animal = {
+//   eats: true,
+// };
+// const dog = Object.create(animal);
+// dog.barks = true;
+
+// for (const key in dog) {
+//   if (!dog.hasOwnProperty(key)) continue;
+
+//   console.log(key); // barks
+// }
+
+// ------------------------------
+
+// const animal = {
+//   eats: true,
+// };
+// const dog = Object.create(animal);
+// dog.barks = true;
+
+// const dogKeys = Object.keys(dog);
+
+// console.log(dogKeys); // ['barks']
+
+// -------------------Класи-----------------------------------------
+
+// class User {}
+
+// const mango = new User();
+// console.log(mango); // {}
+
+// -------------------------
+
+// class User {
+//   constructor(name, email) {
+//     this.name = name;
+//     this.email = email;
+//   }
+// }
+
+// const mango = new User("Mango", "mango@hotmail.com");
+// console.log(mango);
+
+// ------------------------Об'єкт параметрів-------------------------------------------------------
+
+// class User {
+//   constructor({ name, email }) {
+//     this.name = name;
+//     this.email = email;
+//   }
+// }
+
+// const mango = new User({
+//   name: "Mango",
+//   email: "mango@mail.com",
+// });
+
+// console.log(mango);
+
+// ------------------------Методи класу-------------------------------------------------------
+
+// class User {
+//   constructor({ name, email }) {
+//     this.name = name;
+//     this.email = email;
+//   }
+
+//   getEmail() {
+//     returnthis.email;
+//   }
+
+//   changeEmail(newEmail) {
+//     this.email = newEmail;
+//   }
+// }
+
+// const mango = new User({
+//   name: "Mango",
+//   email: "mango@meil.com",
+// });
+
+// mango.changeEmail("qwerty@meil.com");
+// console.log(mango);
+
+// ------------------------Приватні властивості-------------------------------------------------------
+
+// class User {
+//   #email;
+
+//   constructor({ name, email }) {
+//     this.name = name;
+//     this.#email = email;
+//   }
+
+//   getEmail() {
+//     return this.#email;
+//   }
+
+//   changeEmail(newEmail) {
+//     this.#email = newEmail;
+//   }
+// }
+
+// const mango = new User({
+//   name: "Mango",
+//   email: "mango@mail.com",
+// });
+
+// mango.changeEmail("mango@hottymail.com");
+// console.log(mango.getEmail()); // mango@hottymail.com
+
+// console.log(mango.#email); //Private field '#email' must be declared in an enclosing class
