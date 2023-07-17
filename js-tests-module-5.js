@@ -1049,6 +1049,259 @@
 // editor.addPost("post-1");
 // console.log(editor.posts); // ['post-1']
 
+// =============================Нотатки з записаної лекції=============================================
+
+// // Example 1 - Блогер
+// // Напиши клас Blogger для створення об'єкта блогера з наступними властивостями:
+
+// // email - пошта, рядок
+// // age - вік, число
+// // numberOfPosts - кількість постів, число
+// // topics - масив тем на яких спеціалізується блогер
+// // Клас чекає один параметр - об'єкт налаштувань з однойменними властивостями.
+
+// // Додай метод getInfo(), який, повертає рядок: User ${пошта} is ${вік} years old and has ${кількість постів} posts.
+
+// // Додай метод updatePostCount(value), який у параметрі value приймає кількість постів, які потрібно додати користувачеві.
+
+// class Blogger {
+//   constructor({ name, age, numberOfPosts, topics }) {
+//     this.email = name;
+//     this.age = age;
+//     this.numberOfPosts = numberOfPosts;
+//     this.topics = topics;
+//   }
+//   getInfo() {
+//     return `User ${this.email} is ${this.age} years old and has ${this.numberOfPosts} posts.`;
+//   }
+//   updatePostCount(value) {
+//     this.numberOfPosts += value;
+//   }
+// }
+
+// const mango = new Blogger({
+//   name: "mango@mail.com",
+//   age: 24,
+//   numberOfPosts: 20,
+//   topics: ["tech", "cooking"],
+// });
+// console.log(mango.getInfo()); // User mango@mail.com is 24 years old and has 20 posts
+// mango.updatePostCount(5);
+// console.log(mango.getInfo()); // User mango@mail.com is 24 years old and has 25 posts
+
+// const poly = new Blogger({
+//   name: "poly@mail.com",
+//   age: 19,
+//   numberOfPosts: 17,
+//   topics: ["sports", "gaming", "health"],
+// });
+// console.log(poly.getInfo()); // User poly@mail.com is 19 years old and has 17 posts
+// poly.updatePostCount(4);
+// console.log(poly.getInfo()); // User poly@mail.com is 19 years old and has 21 posts
+
+// -------------------------------------------------------------------------------------------------------------
+
+// // Example 2 - Сховище
+// // Напиши клас Storage який створює об'єкти для керування складом товарів. При виклику отримуватиме один аргумент - початковий масив товарів і записуватиме його властивість items.
+
+// // Додай методи класу:
+
+// // getItems() - повертає масив товарів.
+// // addItem(item) - отримує новий товар і додає його до поточних.
+// // removeItem(item) - отримує товар і, якщо він є, видаляє його з поточних.
+
+// class Storage {
+//   constructor(items) {
+//     this.items = items;
+//   }
+//   getItems() {
+//     return this.items;
+//   }
+//   addItem(item) {
+//     if (!this.items.includes(item)) {
+//       this.items.push(item);
+//     }
+//     console.log("Такий товар вже є в наявності");
+//   }
+//   removeItem(item) {
+//     const idx = this.items.indexOf(item);
+//     if (!!~idx) {
+//       // this.items.includes(item)
+//       this.items.splice(idx, 1);
+//     }
+//   }
+// }
+
+// const storage = new Storage(["🍎", "🍋", "🍇", "🍑"]);
+
+// const items = storage.getItems();
+// console.table(items); // [ '🍎', '🍋', '🍇', '🍑' ]
+
+// storage.addItem("🍌");
+// console.table(storage.items); // [ '🍎', '🍋', '🍇', '🍑', '🍌' ]
+
+// // storage.addItem("🍌");
+// // console.table(storage.items); // [ '🍎', '🍋', '🍇', '🍑', '🍌' ]
+
+// storage.removeItem("🍋");
+// console.table(storage.items); // [ '🍎', '🍇', '🍑', '🍌' ]
+
+// -------------------------------------------------------------------------------------------------------------
+
+// // Example 3 - User
+// // Напиши клас User який створює об'єкт із властивостями login та email. Оголоси приватні властивості #login та #email, доступ до яких зроби через гетер та сетер login та email.
+
+// class User {
+//   #login;
+//   #email;
+//   constructor({ login, email }) {
+//     this.#login = login;
+//     this.#email = email;
+//   }
+
+//   get login() {
+//     return this.#login;
+//   }
+
+//   set login(newLogin) {
+//     if (this.#login !== newLogin) {
+//       this.#login = newLogin;
+//     }
+//   }
+//   get email() {
+//     return this.#email;
+//   }
+
+//   set email(newEmail) {
+//     if (this.#email !== newEmail) {
+//       this.#email = newEmail;
+//     }
+//   }
+// }
+
+// const mango = new User({
+//   login: "Mango",
+//   email: "mango@dog.woof",
+// });
+
+// console.log(mango.login); // Mango
+// mango.login = "Mangodoge";
+// console.log(mango.login); // Mangodoge
+// console.log(mango.email); // mango@dog.woof
+
+// const poly = new User({
+//   login: "Poly",
+//   email: "poly@mail.com",
+// });
+
+// console.log(poly.login); // Poly
+// poly.login = "Polycutie";
+// console.log(poly.login); // Polycutie
+// console.log(poly.email); // poly@mail.com
+
+// -------------------------------------------------------------------------------------------------------------
+
+// // Example 4 - Нотатки
+// // Напиши клас Notes який керує колекцією нотаток у властивості items. Замітка це об'єкт із властивостями text та priority. Додай класу статичну властивість Priority, у якому зберігатиметься об'єкт із пріоритетами.
+
+// // {
+// //   LOW: 'low',
+// //   NORMAL: 'normal',
+// //   HIGH: 'high'
+// // }
+// // Додай методи addNote(note), removeNote(text) та updateNote(text, newPriority).
+
+// class Notes {
+//   static Priority = {
+//     LOW: "low",
+//     NORMAL: "normal",
+//     HIGH: "high",
+//   };
+
+//   constructor(note) {
+//     this.items = note;
+//   }
+
+//   addNote(note) {
+//     const inArr = this.items.some(({ text }) => text === note.text);
+//     if (!inArr) {
+//       this.items.push(note);
+//     }
+//   }
+
+//   removeNote(text) {
+//     const idx = this.items.findIndex(({ text: noteText }) => noteText === text);
+//     if (!!~idx) {
+//       // idx !== -1 або idx > -1
+//       this.items.splice(idx, 1);
+//     }
+//   }
+
+//   updateNote(text, newPriority) {
+//     const idx = this.items.findIndex(({ text: noteText }) => noteText === text);
+//     if (!!~idx) {
+//       // idx !== -1 або idx > -1
+//       this.items[idx].priority = newPriority;
+//     }
+//   }
+// }
+
+// const myNotes = new Notes([]);
+
+// // myNotes.addNote({
+// //   text: "Моя перша замітка",
+// //   priority: Notes.Priority.LOW,
+// // });
+
+// // myNotes.addNote({
+// //   text: ["Моя перша замітка"],
+// //   priority: Notes.Priority.LOW,
+// // });
+
+// myNotes.addNote({
+//   text: "Моя перша замітка",
+//   priority: Notes.Priority.LOW,
+// });
+// console.log(myNotes.items);
+
+// myNotes.addNote({
+//   text: "Моя друга замітка",
+//   priority: Notes.Priority.NORMAL,
+// });
+// console.log(myNotes.items);
+
+// myNotes.removeNote("Моя перша замітка");
+// console.log(myNotes.items);
+
+// myNotes.updateNote("Моя друга замітка", Notes.Priority.HIGH);
+// console.log(myNotes.items);
+
+// ------------------НЕДОРОБИВ-------------------------------------------------------------------------------------------
+
+// Самостійне опрацювання
+// Напишіть клас Toggle який приймає об'єкт налаштувань {isOpen: boolean} і оголошує одну властивість on - стан вкл/викл (true/false). За замовчуванням значення властивості on повинно бути false.
+
+// class Toggle {
+//   static on = false;
+//   constructor({ isOpen: boolean }) {
+//     this.#on = isOpen;
+//   }
+// }
+
+// const firstToggle = new Toggle({ isOpen: true });
+// console.group("firstToggle");
+// console.log(firstToggle.on);
+// firstToggle.toggle();
+// console.log(firstToggle.on);
+// console.groupEnd("firstToggle");
+
+// const secondToggle = new Toggle();
+// console.group("secondToggle");
+// console.log(secondToggle.on);
+// secondToggle.toggle();
+// console.log(secondToggle.on);
+// console.groupEnd("secondToggle");
+
 // =============================Нотатки з онлайн лекції=============================================
 
 // // Task-1
@@ -1265,3 +1518,386 @@
 // bloodseker.heal();
 // console.log(bloodseker);
 // console.log(Hero.counter);
+
+// ===============Додаткова практика====================================================================
+
+// // Виконайте сортування масиву цін за спаданням та зростанням.
+
+// const prices = [1000, 240, 670, 360, 89, 20];
+
+// const sortPrices = [...prices].sort((a, b) => a - b);
+// console.log(sortPrices);
+// const sortB = [...prices].sort((a, b) => b - a);
+// console.log(sortB);
+
+// -------------------------------------------------
+
+// // Напишіть функцію sayHi(), яка приймає в якості параметра масив імен,
+// // перебирає масив і додає до кожного ім'я привітання.
+// // Функція повертає новий масив  ["Ivan привіт!", "Maria привіт!", "Anna привіт!"]
+
+// const names = ["Ivan", "Maria", "Anna"];
+
+// function sayHi(names) {
+//   return names.map((name) => `${name} привіт!`);
+// }
+// console.log(sayHi(names));
+
+// ----------------------------------------------
+
+// // Напишіть стрілочну функцію, яка буде перевіряти
+// // чи містить даний масив, хоча б одне число більше 20.
+
+// const numbers = [20, 16, 11, 13, 15];
+// const someNumb = numbers.some((number) => number > 20);
+// console.log(someNumb);
+
+// -------------------------------------------------
+
+// // Напишіть стрілочну функцію яка буд перевіряти чи всі студенти
+// // у нашому масиві старші 18 років.
+
+// const students = [
+//   { name: "Alex", age: 17 },
+//   { name: "Stas", age: 18 },
+//   { name: "Mike", age: 22 },
+//   { name: "Den", age: 20 },
+// ];
+
+// const someNumb = students.every((student) => student.age > 18);
+
+// console.log(someNumb);
+
+// -----------------------------------------------------
+
+// // Напишіть функцію fruitsCount(), яка буде визначати загальну кількість
+// // бананів, яблук і інших фруктів у масиві.
+// // Функція приймає в якості параметра масив фруктів і повертає об'єкт:
+// // ключ - назва фрукта, значення - кількість цих фруктів у масиві.
+// // Результат роботи функції: Object { apples: 3, bananas: 1, oranges: 1, kiwi: 1 }
+
+// const fruits = ["apples", "bananas", "oranges", "apples", "kiwi", "apples"];
+
+// const fruitsCount = fruits.reduce((acc, fruit) => {
+//   if (!acc[fruit]) {
+//     acc[fruit] = 1;
+//     return acc;
+//   }
+
+//   acc[fruit] += 1;
+//   return acc;
+// }, {});
+
+// console.log(fruitsCount);
+
+// ---------------------------------------------------------
+
+// // Зібрати в allTopics масив всіх предметів всіх курсів.
+// //Виконати фільтрацію, залишивши в allTopics тільки унікальні елементи.
+
+// const courses = [
+//   {
+//     name: "Basic HTML+CSS",
+//     topics: ["VSCode", "HTML", "CSS", "GitHub", "GitHub Desctop"],
+//   },
+//   {
+//     name: "Intermediate HTML+CSS",
+//     topics: ["VSCode", "HTML", "CSS", "GitHub", "Git", "Terminal"],
+//   },
+//   {
+//     name: "Basic JavaScript",
+//     topics: [
+//       "VSCode",
+//       "Type system",
+//       "Loops",
+//       "Function",
+//       "Git",
+//       "Conditions",
+//       "Classes",
+//       "GitHub",
+//       "DOM",
+//     ],
+//   },
+//   {
+//     name: "Intermediate JavaScript",
+//     topics: [
+//       "VSCode",
+//       "NPM",
+//       "Bundlers",
+//       "Transpiling",
+//       "Git",
+//       "Promises",
+//       "AJAX",
+//       "GitHub",
+//     ],
+//   },
+// ];
+
+// const allTopics = courses
+//   .flatMap((elem) => elem.topics)
+//   .filter((elem, idx, array) => array.indexOf(elem) === idx);
+// console.log(allTopics);
+
+// --------------------------------------------------------
+
+// // у нас є масив користувачів, кожен з яких має поля id та name.
+// //  Давайте знайдемо той де id = 1.
+
+// let users = [
+//   { id: 1, name: "John" },
+//   { id: 2, name: "Pete" },
+//   { id: 3, name: "Mary" },
+// ];
+
+// const findId = users.find((user) => user.id === 1);
+// console.log(findId.name);
+
+// -------------------------------------------------------
+
+// // Напишіть функцію getTotalBoysYears() яка порахує загальний вік хлопців.
+
+// const friends = [
+//   {
+//     passport: "03005988",
+//     name: "Joseph Francis Tribbiani Jr",
+//     age: 32,
+//     sex: "m",
+//   },
+//   { passport: "03005989", name: "Chandler Muriel Bing", age: 33, sex: "m" },
+//   { passport: "03005990", name: "Ross Eustace Geller", age: 33, sex: "m" },
+//   { passport: "03005991", name: "Rachel Karen Green", age: 31, sex: "f" },
+//   { passport: "03005992", name: "Monica Geller", age: 31, sex: "f" },
+//   { passport: "03005993", name: "Phoebe Buffay", age: 34, sex: "f" },
+// ];
+
+// const totalAge = friends
+//   .filter((elem) => elem.sex === "m")
+//   .reduce((acc, elem) => acc + elem.age, 0);
+
+// console.log(totalAge);
+
+// // Напишіть функцію getGirlsPassports() яка поверне масив номерів паспортів дівчат.
+
+// const girlPassport = friends
+//   .filter((elem) => elem.sex === "f")
+//   .map((elem) => elem.passport);
+
+// console.log(girlPassport);
+
+// --------------------------------------------------------
+
+// //Напиши клас Rectangle який створює об'єкт
+// //з ​​властивостями height, width
+// //і методом calculateArea() для підрахунку прлощі прямокутника.
+
+// // class Rectangle {
+// //   constructor({ height, width }) {
+// //     this.height = height;
+// //     this.width = width;
+// //   }
+// //   calculateArea() {
+// //     return this.height * this.width;
+// //   }
+// // }
+
+// // const rect = new Rectangle({ height: 5, width: 8 });
+
+// // console.log(rect);
+// // console.log(rect.calculateArea());
+
+// // ------без деструктиризації--------------
+
+// class Rectangle {
+//   constructor(height, width) {
+//     this.height = height;
+//     this.width = width;
+//   }
+//   calculateArea() {
+//     return this.height * this.width;
+//   }
+// }
+
+// const rect = new Rectangle(5, 8);
+
+// console.log(rect);
+// console.log(rect.calculateArea());
+
+// --------------------------------------------------------
+
+// //Напиши клас Client який створює об'єкт
+// //з ​​властивостями login, email
+// //Оголоси приватні властивості #login #email,
+// //доступ до яких зроби через геттер та сеттер login email
+
+// class Client {
+//   #login;
+//   #email;
+
+//   constructor({ login, email }) {
+//     this.#email = email;
+//     this.#login = login;
+//   }
+
+//   get login() {
+//     return this.#login;
+//   }
+
+//   set login(newLogin) {
+//     this.#login = newLogin;
+//   }
+
+//   get email() {
+//     return this.#email;
+//   }
+
+//   set email(newEmail) {
+//     this.#email = newEmail;
+//   }
+// }
+
+// const pedro = new Client({ login: "pedro", email: "pedro@mail.com" });
+
+// console.log(pedro.login);
+// console.log(pedro.email);
+
+// pedro.login = "pedro13";
+// pedro.email = "pedro13@mail.com";
+
+// console.log(pedro.login);
+// console.log(pedro.email);
+
+// -------------------------------------------------------
+
+// // Створи клас Phone який створює об'єкт з ​​властивістю price.
+// // Додай статичну властивість MAX_PRICE зі значенням 40000 - максимально допустима ціна телефону.
+// // Оголоси приватну властивість price доступ до якої буде через геттер та сеттер.
+// // Додай сетеру price перевірку значення параметра newPrice, що передається.Якщо воно більше за MAX_PRICE,
+// // сеттер нічого не робить, а якщо менше або дорівнює, то перезаписує ціну телефону.
+
+// class Phone {
+//   static MAX_PRICE = 40000;
+
+//   #price;
+
+//   constructor(price) {
+//     this.#price = price;
+//   }
+
+//   get price() {
+//     return this.#price;
+//   }
+
+//   set price(newPrice) {
+//     if (newPrice <= Phone.MAX_PRICE) {
+//       this.#price = newPrice;
+//       return;
+//     }
+//   }
+// }
+
+// const proMax = new Phone(10000);
+// console.log(proMax.price);
+// proMax.price = 38000;
+// console.log(proMax.price);
+
+// -------------------------------------------------------
+
+// // Є об'єкт і функція для підрахунку суми чисел.
+// // Виведіть у консоль результат виконання функції, якщо a = 3, b = 5.
+
+// var obj = {
+//   num: 2,
+// };
+
+// function add(a, b) {
+//   return this.num + a + b;
+// }
+
+// // ---call
+// console.log(add.call(obj, 3, 5));
+
+// // ---apply
+// console.log(add.apply(obj, [3, 5]));
+
+// // ---bind
+// const qwer = add.bind(obj, 3, 5);
+// console.log(qwer());
+
+// -------------------------------------------------------
+
+// // Є два об'єкти, які описують деякі характеристики телефонів.
+// // Потрібно викликати метод showInfo, щоб він логував інформацію про кожний телефон,
+// // передаючи аргументом країну-виробник телефону.
+// // "HUAWEI" - "China", "SAMSUNG" - "South Korea".
+
+// const tel = {
+//   regNumber: "AE8345FEDAS",
+//   brand: "HUAWEI",
+//   showInfo(country) {
+//     console.log(`${country} ${this.regNumber} ${this.brand}`);
+//   },
+// };
+
+// const tel_2 = {
+//   regNumber: "AO8518FEGHT",
+//   brand: "SAMSUNG",
+// };
+
+// tel.showInfo("China");
+
+// tel.showInfo.call(tel_2, "South Korea");
+
+// tel.showInfo.apply(tel_2, ["South Korea"]);
+
+// const qwe = tel.showInfo.bind(tel_2, "Canada");
+
+// qwe();
+
+// -------------------------------------------------------
+
+// // 1. Створіть об'єкт car з трьома властивостями
+// // carBrand: "Audi Q3"
+// // price: 23000
+// // метод getData() котрий буде логувати рядок :"Audi Q3 за 23000 $"
+
+// // 2. Напишіть функцію makeMessage(callback), котра отримує в якості параметра
+// // callback-функцію getData() і логує повідомлення "Ви замовили ${callback()}"
+
+// const car = {
+//   carBrand: "Audi Q3",
+//   price: 23000,
+
+//   getData() {
+//     return `${this.carBrand} за ${this.price}`;
+//   },
+// };
+
+// function makeMessage(callback) {
+//   console.log(`Ви замовили ${callback()}`);
+// }
+// makeMessage(car.getData.bind(car));
+
+// -------------------------------------------------------
+
+// // Напишіть код таким чином, щоб об'єкт apples став прототипом для об'єкта fuji.
+// // Перевірте чи став об'єкт apples  прототипом для об'єкта fuji.
+// // Додайте об'єкту fuji властивість color: 'pink'  і виведіть його у консоль.
+// // Виведіть у консоль значення властивості type для об'єкту fuji.
+// // Перевірте і виведіть у консоль чи є властивість vitamins власною властивістю об'єкту apples.
+// // Перевірте і виведіть у консоль чи є властивість cookingMethod власною властивістю об'єкту fuji.
+
+// const apples = {
+//   type: "fruit",
+//   cookingMethod: ["jam", "juice", "baked", "dried", "fresh"],
+//   vitamins: ["A", "B1", "B2", "E"],
+// };
+
+// const fuji = Object.create(apples);
+// console.log(apples.isPrototypeOf(fuji));
+
+// fuji.color = "pink";
+// console.log(fuji.type);
+
+// console.log(apples.hasOwnProperty("vitamins"));
+
+// console.log(fuji.hasOwnProperty("cookingMethod"));
