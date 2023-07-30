@@ -1077,6 +1077,271 @@
 //   }),
 // );
 
+// =========================================Задачі з практичної частини онлайн лекції==============================================================
+
+// ===================вирахувати середній час та кількість гравців і вивести це повідомленням===================
+
+// // const players = {
+// //   Den: 60,
+// //   Mark: 130,
+// //   Gus: 45,
+// //   Gluck: 120,
+// //   Greg: 40,
+// // };
+
+// // let totalTime = 0;
+
+// // function foo(obj) {
+// //   for (const key in players) {
+// //     totalTime += obj[key];
+// //   }
+// //   let countPayers = Object.keys(obj).length;
+// //   let averangeTime = totalTime / countPayers;
+
+// //   return `Було ${countPayers} користувачів, середній час оренди комп'ютера: ${averangeTime} хвилин`;
+// // }
+// // console.log(foo(players));
+
+// // ----------------------або коротче
+
+// const players = {
+//   Den: 60,
+//   Mark: 130,
+//   Gus: 45,
+//   Gluck: 120,
+//   Greg: 40,
+// };
+
+// function getTime(obj) {
+//   const values = Object.values(obj);
+//   let total = 0;
+//   for (const value of values) {
+//     total += value;
+//   }
+//   return `Було ${values.length} користувачів, середній час оренди комп'ютера: ${
+//     total / values.length
+//   } хвилин`;
+// }
+// console.log(getTime(players));
+
+// //===================Вивести імена друзів які читали книжку та підрахувати загальний вік всіх друзів===================
+
+// const friends = [
+//   {
+//     name: "Anna",
+//     books: ["Bible", "Harry Potter"],
+//     age: 21,
+//   },
+//   {
+//     name: "Bob",
+//     books: ["War and peace", "Romeo and Juliet"],
+//     age: 26,
+//   },
+//   {
+//     name: "Alice",
+//     books: ["War and peace", "Romeo and Juliet"],
+//   },
+//   {
+//     name: "Oleksii",
+//     books: ["Bible", "War and peace", "Harry Potter", "Romeo and Juliet"],
+//     age: 26,
+//   },
+// ];
+
+// function getNames(arr, bookName) {
+//   let result = [];
+//   for (const user of arr) {
+//     if (user.books.includes(bookName)) {
+//       result.push(user.name);
+//     }
+//   }
+//   return result.join(", ");
+// }
+
+// console.log(getNames(friends, "Harry Potter"));
+
+// //---------------рахуємо суму віку користувачів
+
+// function getTotalAge(arr) {
+//   let totalAge = 0;
+//   for (const user of arr) {
+//     if (user.hasOwnProperty("age")) {
+//       totalAge += user.age;
+//     }
+//   }
+//   return totalAge;
+// }
+
+// console.log(getTotalAge(friends));
+
+// // ===================Task - 4===================
+// // 1 Створити метод об'єкту який буде приймати 1 параметр назву факультету та повертати списoк імен учнів факультету
+// // 2 Створити метод об'єкту який буде приймати 1 параметр назву факультету та повертати кількість очків факультета
+
+// const hogvarts = {
+//   griffindor: [
+//     {
+//       name: "Harry",
+//       // points: 17,
+//     },
+//     {
+//       name: "Hermiona",
+//       points: 19,
+//     },
+//     {
+//       name: "Ron",
+//       points: 14,
+//     },
+//   ],
+
+//   slizerin: [
+//     {
+//       name: "Draco",
+//       points: 17,
+//     },
+//     {
+//       name: "Goyl",
+//       points: 14,
+//     },
+//     {
+//       name: "Crabbe",
+//       points: 5,
+//     },
+//   ],
+//   getStudentsList(faculty) {
+//     if (!(faculty in this)) {
+//       return "Faculty not found 😥";
+//     }
+//     let names = [];
+//     for (const student of this[faculty]) {
+//       names.push(student.name);
+//     }
+//     return names.join(", ");
+//   },
+
+//   getTotalPoints(faculty) {
+//     if (!(faculty in this)) {
+//       return "Faculty not found 😥";
+//     }
+
+//     let total = 0;
+//     for (const student of this[faculty]) {
+//       if ("points" in student) {
+//         total += student.points;
+//       }
+//     }
+//     return total;
+//   },
+// };
+
+// console.log(hogvarts.getStudentsList("griffindor"));
+// console.log(hogvarts.getStudentsList("slizerin"));
+// console.log(hogvarts.getStudentsList("sllizerin"));
+
+// console.log(hogvarts.getTotalPoints("griffindor"));
+// console.log(hogvarts.getTotalPoints("slizerin"));
+// console.log(hogvarts.getTotalPoints("sllizerin"));
+
+// ================Нотатки========================================
+
+// const user = {
+//   name: "Joe",
+//   age: 30,
+//   email: "joe@mail.com",
+//   city: "New York",
+// };
+
+// const { name, age, email, city } = user;
+// const userAge = age;
+// const userName = name;
+
+// console.log(userName);
+// console.log(userAge);
+
+// ------------------------
+
+// const product1 = {
+//   name: "Product A",
+//   price: 20,
+// };
+
+// const product2 = {
+//   color: "blue",
+//   quantity: 50,
+// };
+
+// const combineProduct = { ...product1, ...product2 };
+// console.log(combineProduct);
+
+// ---------------------------------------------------------
+
+// const user = {
+//   name: "Joe",
+//   age: 30,
+//   email: "joe@mail.com",
+//   city: "New York",
+// };
+
+// function getRemainingInfo({ name, age, ...rest }) {
+//   return rest;
+// }
+
+// console.log(getRemainingInfo(user));
+
+// ---------------------------------------------------------------------------------------------------------------------------------
+
+// Напиши ф-цію так щоб вона повертала новий об'єкт із вл-тю fullName, замість firstName та lastName.
+
+// function transformUsername({ firstName, lastName, ...props }) {
+//   return {
+//     fullName: `${firstName} ${lastName}`,
+//     ...props,
+//   };
+// }
+
+// console.log(
+//   transformUsername({
+//     id: 1,
+//     firstName: "Jacob",
+//     lastName: "Mercer",
+//     email: "j.mercer@mail.com",
+//     friendCount: 40,
+//   }),
+// );
+
+// // Task - 4 - Деструктуризація
+// // Напиши функцію так, щоб вона приймала об'єкт параметрів із властивостями companyName та stock та виводила репорт про кількість товарів на складі будь-якої компанії.
+
+// function getStockReport({ companyName, stock }) {
+//   const values = Object.values(stock);
+//   let total = 0;
+//   for (const value of values) {
+//     total += value;
+//   }
+//   return `${companyName} has ${total} items in stock`;
+// }
+
+// console.log(
+//   getStockReport({
+//     companyName: "Cyberdyne Systems",
+//     stock: {
+//       repairBots: 150,
+//       defenceBots: 50,
+//     },
+//   }),
+// ); // "Cyberdyne Systems has 200 items in stock"
+
+// console.log(
+//   getStockReport({
+//     companyName: "Belacci",
+//     stock: {
+//       shoes: 20,
+//       skirts: 10,
+//       hats: 5,
+//     },
+//   }),
+// ); // "Belacci has 35 item in stock"//
+
 // =========================================ДОДАТКОВА ПРАКТИКА 02.07.23==============================================================
 
 // // Напишіть функцію, яка створює масив з вказаною довжиною і заповнює його вказанним значення.

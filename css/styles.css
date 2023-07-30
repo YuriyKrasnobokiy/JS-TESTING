@@ -3,8 +3,9 @@ body {
   text-align: center;
   margin: 0;
 }
+*/
 
-.title {
+/* /* .title {
   font-family: "Tangerine", cursive;
   text-transform: uppercase;
   font-weight: 700;
@@ -12,7 +13,7 @@ body {
   line-height: 1;
   font-size: 90px;
   color: rgb(95, 3, 3);
-}
+} */
 
 .after-title {
   font-family: "Jim Nightshade", cursive;
@@ -33,3 +34,13 @@ body {
   font-size: 50px;
   color: rgb(95, 3, 3);
 }
+
+/* ------------------------------------------ */
+/* з додаткової практики TASK 3 */
+/* #box {
+  width: 50px;
+  height: 50px;
+  background-color: tomato;
+  margin-bottom: 20px;
+} */
+/* ------------------------------------------ */

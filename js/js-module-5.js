@@ -644,22 +644,27 @@
 // };
 
 // function speedSensor(maxSpeed) {
-//   // if (this.speed <= maxSpeed) {
-//   //   console.log(`Авто ${this.brand} рухається з безпечною швидкістю`);
-//   // } else {
-//   //   console.log(`Авто ${this.brand} перевищило безпечну швидкість!!! 😨`);
-//   // }
-
-//   // ----------через тернарник-----------
-
-//   return this.speed <= maxSpeed
-//     ? console.log(`Авто ${this.brand} рухається з безпечною швидкістю`)
-//     : console.log(`Авто ${this.brand} перевищило безпечну швидкість!!! 😨`);
+//   if (this.speed <= maxSpeed) {
+//     console.log(`Авто ${this.brand} рухається з безпечною швидкістю`);
+//   } else {
+//     console.log(`Авто ${this.brand} перевищило безпечну швидкість!!! 😨`);
+//   }
 // }
-
 // speedSensor.call(audi, 70);
 
 // speedSensor.call(tesla, 70);
+
+// ----------через тернарник-----------
+
+// function speedSensor(maxSpeed) {
+//   return this.speed <= maxSpeed
+//     ? `Авто ${this.brand} рухається з безпечною швидкістю`
+//     : `Авто ${this.brand} перевищило безпечну швидкість!!! 😨`;
+// }
+
+// console.log(speedSensor.call(audi, 70));
+
+// console.log(speedSensor.call(tesla, 70));
 
 // --------------------------------------------------------------------------------------------------------
 
@@ -1276,30 +1281,33 @@
 // myNotes.updateNote("Моя друга замітка", Notes.Priority.HIGH);
 // console.log(myNotes.items);
 
-// ------------------НЕДОРОБИВ-------------------------------------------------------------------------------------------
+// -----!!!!!!!!!!!!!!Самостійне опрацювання, поміг чат gpt-!!!!!!!!---!!!!!!!!----!!!!!!!!!!!!!!-!!!!!!!!!!!!!!!!!!!!!!
 
 // Самостійне опрацювання
 // Напишіть клас Toggle який приймає об'єкт налаштувань {isOpen: boolean} і оголошує одну властивість on - стан вкл/викл (true/false). За замовчуванням значення властивості on повинно бути false.
 
 // class Toggle {
-//   static on = false;
-//   constructor({ isOpen: boolean }) {
-//     this.#on = isOpen;
+//   constructor(settings = { isOpen: false }) {
+//     this.on = settings.isOpen || false;
+//   }
+
+//   toggle() {
+//     this.on = !this.on;
 //   }
 // }
 
 // const firstToggle = new Toggle({ isOpen: true });
 // console.group("firstToggle");
-// console.log(firstToggle.on);
+// console.log(firstToggle.on); // true
 // firstToggle.toggle();
-// console.log(firstToggle.on);
+// console.log(firstToggle.on); // false
 // console.groupEnd("firstToggle");
 
 // const secondToggle = new Toggle();
 // console.group("secondToggle");
-// console.log(secondToggle.on);
+// console.log(secondToggle.on); // false
 // secondToggle.toggle();
-// console.log(secondToggle.on);
+// console.log(secondToggle.on); // true
 // console.groupEnd("secondToggle");
 
 // =============================Нотатки з онлайн лекції=============================================
