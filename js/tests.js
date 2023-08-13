@@ -656,3 +656,47 @@
 // const bloodseker8 = new Hero("Bloodseker");
 // console.log(bloodseker);
 // console.log(bloodseker.heal());
+
+// ============CODEWARS========== Пошук двух мінімальних чисел та вивести суму їх==================
+
+// function sumTwoSmallestNumbers(numbers) {
+//   const min = Math.min(...numbers);
+
+//   const newArr = numbers.filter((elem) => elem > min);
+
+//   const secondMin = Math.min(...newArr);
+//   const sum = min + secondMin;
+//   return sum;
+// }
+// console.log(
+//   sumTwoSmallestNumbers([5, 1, 12, 2, 22, 45, 47, 45, 41, 41, 42, 46, 48]),
+// );
+
+// =======================CODEWARS===================
+
+// function solution(string) {
+//   string = string.replace(/([A-Z])/g, " $1");
+//   return string;
+// }
+
+// console.log(solution("helloWorldCrowDigPig"));
+
+// -----------------else variant-------------------------
+
+// function solution(string) {
+//   const result = [];
+//   const strArr = string.split("");
+//   console.log(strArr);
+//   const alphabet = "QWERTYUIOPLKJHGFDSAZXCVBNM";
+//   for (let i = 0; i < strArr.length; i += 1) {
+//     if (alphabet.includes(strArr[i])) {
+//       strArr[i] = " " + strArr[i];
+//       result.push(strArr[i]);
+//     } else {
+//       result.push(strArr[i]);
+//     }
+//   }
+//   return result.join("");
+// }
+
+// console.log(solution("helloWorldCrowDigPig"));
