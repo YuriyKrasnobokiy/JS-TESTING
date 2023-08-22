@@ -120,50 +120,50 @@
 // * Якщо введені дані не збігаються з потрібними даними, викликати аlert і
 // * повідомляти про помилку.
 
-const login = {
-  email: "user@mail.com",
-  password: "123456",
-};
+// const login = {
+//   email: "user@mail.com",
+//   password: "123456",
+// };
 
-const form = document.querySelector("#login-form");
+// const form = document.querySelector("#login-form");
 
-form.addEventListener("submit", handlerSubmit);
+// form.addEventListener("submit", handlerSubmit);
 
-const storageData = JSON.parse(localStorage.getItem("dataKey"));
+// const storageData = JSON.parse(localStorage.getItem("dataKey"));
 
-if (JSON.parse(localStorage.getItem("dataKey"))) {
-  form.elements.email.value = storageData.email;
-  form.elements.password.value = storageData.password;
-  form.elements.email.disabled = true;
-  form.elements.password.disabled = true;
-  form.elements.button.textContent = "logout";
-}
+// if (JSON.parse(localStorage.getItem("dataKey"))) {
+//   form.elements.email.value = storageData.email;
+//   form.elements.password.value = storageData.password;
+//   form.elements.email.disabled = true;
+//   form.elements.password.disabled = true;
+//   form.elements.button.textContent = "logout";
+// }
 
-function handlerSubmit(event) {
-  event.preventDefault();
-  if (JSON.parse(localStorage.getItem("dataKey"))) {
-    form.elements.button.textContent = "login";
-    form.elements.email.disabled = false;
-    form.elements.password.disabled = false;
-    localStorage.removeItem("dataKey");
-    form.reset();
-    return;
-  }
-  if (
-    form.elements.email.value !== login.email ||
-    form.elements.password.value !== login.password
-  ) {
-    alert("ВВедено некоректні дані");
-  }
+// function handlerSubmit(event) {
+//   event.preventDefault();
+//   if (JSON.parse(localStorage.getItem("dataKey"))) {
+//     form.elements.button.textContent = "login";
+//     form.elements.email.disabled = false;
+//     form.elements.password.disabled = false;
+//     localStorage.removeItem("dataKey");
+//     form.reset();
+//     return;
+//   }
+//   if (
+//     form.elements.email.value !== login.email ||
+//     form.elements.password.value !== login.password
+//   ) {
+//     alert("ВВедено некоректні дані");
+//   }
 
-  const userData = {
-    email: form.elements.email.value,
-    password: form.elements.password.value,
-  };
+//   const userData = {
+//     email: form.elements.email.value,
+//     password: form.elements.password.value,
+//   };
 
-  localStorage.setItem("dataKey", JSON.stringify(userData));
+//   localStorage.setItem("dataKey", JSON.stringify(userData));
 
-  form.elements.email.disabled = true;
-  form.elements.password.disabled = true;
-  form.elements.button.textContent = "logout";
-}
+//   form.elements.email.disabled = true;
+//   form.elements.password.disabled = true;
+//   form.elements.button.textContent = "logout";
+// }
